@@ -4,12 +4,16 @@
 .idea/
 .idea/*.*
 
-# Generated files
-gen/*
-gen/*.*
-gen/*/*
-gen/*/*.*
+/homepage/.hugo_build.lock
 
-# Macos stuff
+/homepage/public
+
+# Generated files
+/homepage/resources/_gen
+/homepage/resources/_gen/*
+/homepage/resources/_gen/*.*
+
+# MacOS stuff
 .DS_Store
 */.DS_Store
+/resources/_gen/assets/css/ananke/css/main.css_83735de7ca999e9c17f3419b41b93fdb.content
