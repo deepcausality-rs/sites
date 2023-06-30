@@ -1,16 +1,49 @@
 baseURL = '/'
-title = 'DeepCausality'
+theme = "LoveIt"
+title = "DeepCausality"
 
 languageCode = "en-us"
 languageName = "English"
-
-theme = "LoveIt"
+# whether to include Chinese/Japanese/Korean
+hasCJKLanguage = false
 
 # Author config
 [author]
 name = "Marvin Hansen"
 email = "marvin.hansen@gmail.com"
 link = ""
+
+# default amount of posts in each pages
+paginate = 12
+# google analytics code [UA-XXXXXXXX-X]
+googleAnalytics = ""
+# copyright description used only for seo schema
+copyright = "(C) DeepCausality"
+
+# whether to use robots.txt
+enableRobotsTXT = true
+# whether to use git commit log
+enableGitInfo = true
+# whether to use emoji code
+enableEmoji = true
+
+
+[params]
+# site default theme ["auto", "light", "dark"]
+defaultTheme = "auto"
+# public git repo url only then enableGitInfo is true
+gitRepo = "https://github.com/deepcausality-rs/deep_causality"
+# LoveIt NEW | 0.1.1 which hash function used for SRI, when empty, no SRI is used
+# ["sha256", "sha384", "sha512", "md5"]
+fingerprint = "sha512"
+# LoveIt NEW | 0.2.0 date format
+dateFormat = "2006-01-02"
+# website title for Open Graph and Twitter Cards
+title = "DeepCausality"
+# website description for RSS, SEO, Open Graph and Twitter Cards
+description = ""
+# website images for Open Graph and Twitter Cards
+#images = ["/logo.png"]
 
 # Menu config
 [menu]
@@ -35,7 +68,7 @@ post = ""
 name = "Blog"
 url = "/posts/"
 # title will be shown when you hover on this menu link
-title = ""
+title = "Blog posts"
 
 
 # Markup related configuration in Hugo
@@ -44,3 +77,21 @@ title = ""
 [markup.highlight]
 # false is a necessary configuration (https://github.com/dillonzq/LoveIt/issues/158)
 noClasses = false
+
+# Footer config
+[params.footer]
+enable = true
+# LoveIt NEW | 0.2.0 Custom content (HTML format is supported)
+custom = ''
+# LoveIt NEW | 0.2.0 whether to show Hugo and theme info
+hugo = false
+# LoveIt NEW | 0.2.0 whether to show copyright info
+copyright = true
+# LoveIt NEW | 0.2.0 whether to show the author
+author = true
+# Site creation time
+since = 2022
+# ICP info only in China (HTML format is supported)
+icp = ""
+# license info (HTML format is supported)
+license = '<a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a>'
