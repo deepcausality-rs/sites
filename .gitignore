@@ -1,0 +1,15 @@
+
+# Jetbrains files & folders
+.idea
+.idea/
+.idea/*.*
+
+# Generated files
+gen/*
+gen/*.*
+gen/*/*
+gen/*/*.*
+
+# Macos stuff
+.DS_Store
+*/.DS_Store
