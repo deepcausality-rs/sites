@@ -27,3 +27,10 @@ and thus is suitable for real-time applications without additional acceleration 
 * Reasoning over causal collection, graph, or hyper-graph structure supported.
 * Recursive causal data-structures enable concise expression of arbitrary complex causal structures.
 * Context aware causality reasoning across data-like, time-like, space-like, spacetime-like entities stored within (multiple) context-hyper-graphs
+
+
+# Author
+
+* Marvin Hansen
+* [Emet-Labs](https://emet-labs.com/about/).
+* GPG Fingerprint: 4B18 F7B2 04B9 7A72 967E 663E 369D 5A0B 210D 39BC
