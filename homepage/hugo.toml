@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'deepcausality.com'
 title = 'DeepCausality'
 
 languageCode = "en-us"
