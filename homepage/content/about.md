@@ -19,3 +19,11 @@ and thus is suitable for real-time applications without additional acceleration 
    within (multiple) context-hyper-graphs.
 4) DeepCausality simplified modelling of complex tempo-spatial patterns.
 5) DeepCausality is small, efficient, and fast, really fast.
+
+# How is deep causality different from deep learning?
+
+* Free of the [independent and identically distributed data (IID) assumption.](https://towardsdatascience.com/independent-and-identically-distributed-ce250ad1bfa8)
+* Deterministic and explainable causal reasoning.
+* Reasoning over causal collection, graph, or hyper-graph structure supported.
+* Recursive causal data-structures enable concise expression of arbitrary complex causal structures.
+* Context aware causality reasoning across data-like, time-like, space-like, spacetime-like entities stored within (multiple) context-hyper-graphs
