@@ -37,15 +37,6 @@ url = "/posts/"
 # title will be shown when you hover on this menu link
 title = ""
 
-[[menu.main]]
-weight = 3
-identifier = "tags"
-pre = ""
-post = ""
-name = "Tags"
-url = "/tags/"
-title = ""
-
 
 # Markup related configuration in Hugo
 [markup]
