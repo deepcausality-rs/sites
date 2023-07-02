@@ -173,7 +173,7 @@ impl<S, T> Grid<S, T>
 
 The grid type is not meant to be used directly because it still requires the instantiation
 of the underlying storage type before the grid type can be constructed. Instead, the GridArray abstracts over
-all for storage implementations via algebraic types implemented as enums.
+all four storage implementations via algebraic types implemented as enums.
 
 ## ArrayGrid
 
@@ -323,7 +323,7 @@ At this point, the reader may wonder how all the above will be used?
 In practice, there are three steps requires to build an ArrayGrid:
 
 1) Define constant array boundaries.
-2) Set the storage type
+2) Chose a storage type
 3) Construct an ArrayGrid with a chosen type
 
 ```rust
@@ -333,11 +333,10 @@ const HEIGHT: usize = 5;
 const DEPTH: usize = 5;
 const TIME: usize = 5;
 
-    // 2) Set the storage type. Use float64 in this case 
-    let storage = [[0.0f64; WIDTH]; HEIGHT];
+    // 2) Chose a storage type. 
+    let array_type = Array2D;
 
     // 3) Construct an ArrayGrid with a chosen type 
-    let array_type = Array2D;
     let ag: ArrayGrid<usize, WIDTH, HEIGHT, DEPTH, TIME> = ArrayGrid::new(array_type);
 
     // Create an index 
