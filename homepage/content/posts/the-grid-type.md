@@ -1,5 +1,5 @@
 ---
-title: "The Grid Type"
+title: "ArrayGrid - A Faster Tensor"
 date: 2023-07-02T20:06:14+08:00
 draft: false
 tags: ['Rust', 'Types']
