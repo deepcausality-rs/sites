@@ -360,7 +360,7 @@ const TIME: usize = 5;
     
     // Low level access to the 3D grid
       let g = ag.array_grid_3d()
-        .expect("failed to create array grid");
+        .expect("failed to get array grid");
 
     assert_eq!(g.height().unwrap(), HEIGHT);
     assert_eq!(g.width().unwrap(), WIDTH);
