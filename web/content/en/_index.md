@@ -1,4 +1,4 @@
 ---
 title: DeepCausality
-description: This is the demo site for Dot Org Theme.
+description: DeepCausality is a hyper-geometric computational causality library for Rust.
 ---
