@@ -41,34 +41,29 @@ en:
       name: "Docs"
       url: "/docs/"
       weight: 3
+
     - identifier: "context"
       name: "Context"
       url: "/docs/context/"
       weight: 1
       parent: "docs"
+
     - identifier: "causal-structure"
       name: "Causal Data Structure"
       url: "/docs/causal-structure/"
       weight: 2
       parent: "docs"
-#    - identifier: "example-3"
-#      name: "Example Child Page"
-#      url: "/example-page/"
-#      weight: 4
-#      parent: "docs"
 
     - identifier: "faq"
       name: "FAQs"
       url: "/faq/"
-      weight: 4
+      weight: 3
 
     - identifier: "blog"
       name: "Blog"
       url: "/blog/"
-      weight: 5
+      weight: 4
 
-
-#
 #es:
 #  languageName: Spanish
 #  contentDir: content/es
