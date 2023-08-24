@@ -17,3 +17,12 @@
 .DS_Store
 */.DS_Store
 /resources/_gen/assets/css/ananke/css/main.css_83735de7ca999e9c17f3419b41b93fdb.content
+
+/web/node_modules/
+/web/public/
+
+# Generated files
+/web/resources/_gen
+/web/resources/_gen/*
+/web/resources/_gen/*.*
+

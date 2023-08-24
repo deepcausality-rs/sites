@@ -12,7 +12,7 @@ custom_css: []
 images: ["/img/social-share.png"]
 
 github:
-  repo_url: "https://github.com/deepcausality-rs/sites"
+  repo_url: "https://github.com/deepcausality-rs/sites/web"
   show_edit_link: true
 
 social_links:
