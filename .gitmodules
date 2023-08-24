@@ -13,3 +13,6 @@
 [submodule "homepage/themes/LoveIt"]
 	path = homepage/themes/LoveIt
 	url = https://github.com/dillonzq/LoveIt.git
+[submodule "web/themes/dot-org-hugo-theme"]
+	path = web/themes/dot-org-hugo-theme
+	url = https://github.com/cncf/dot-org-hugo-theme.git
