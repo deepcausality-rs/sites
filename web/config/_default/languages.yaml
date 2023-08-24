@@ -15,6 +15,7 @@ en:
     main_cta:
       text: "GitHub"
       link: "https://github.com/deepcausality-rs/deep_causality"
+
     footer_cta:
       text: "GitHub"
       link: "https://github.com/deepcausality-rs/deep_causality"
@@ -63,30 +64,3 @@ en:
       name: "Blog"
       url: "/blog/"
       weight: 4
-
-#es:
-#  languageName: Spanish
-#  contentDir: content/es
-#  weight: 2
-#  params:
-#    title: "Título del Sitio"
-#    description: "Descripción del Sitio"
-#  menu:
-#    main:
-#    - identifier: "about"
-#      name: "Acerca de"
-#      url: "/example-page/"
-#      weight: 1
-#    - identifier: "child-1"
-#      name: "Página Hija de Ejemplo"
-#      url: "/example-page/"
-#      weight: 1
-#      parent: "about"
-#    - identifier: "faq"
-#      name: "FAQs"
-#      url: "/faq/"
-#      weight: 3
-#    - identifier: "blog"
-#      name: "Blog"
-#      url: "/blog/"
-#      weight: 2
