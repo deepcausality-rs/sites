@@ -1,18 +1,23 @@
 ######################## default configuration ####################
 # Your theme name
 theme: "dot-org-hugo-theme"
+
 # Title of your website (required).
 title: "DeepCausality"
+
 # Default timezone
 timeZone: "Asia/Singapore"
 
 ######################## i18n ####################
 # Auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
 hasCJKLanguage: true
+
 # Set default content directory for multilingual
 contentDir: content/en/
+
 # Set fallback if international version is not available
 defaultContentLanguage: en
+
 # Set the default language as the root rather than in folder i.e. don't use /en/
 defaultContentLanguageInSubdir: false
 
