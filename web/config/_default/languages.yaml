@@ -4,18 +4,21 @@ en:
   params:
     title: "DeepCausality"
     description: "Computational causality for Rust"
+
     ### accessibility ###
     accessibility:
       skip_text: "Skip to content"
       help_text: "Accessibility Statement"
       help_url: "/accessibility/"
-#    ### calls to action ###
-#    main_cta:
-#      text: "Join"
-#      link: "/join-page/"
-#    footer_cta:
-#      text: "Join us"
-#      link: "/join-page/"
+
+    ### calls to action ###
+    main_cta:
+      text: "GitHub"
+      link: "https://github.com/deepcausality-rs/deep_causality"
+    footer_cta:
+      text: "GitHub"
+      link: "https://github.com/deepcausality-rs/deep_causality"
+
     ### copyright (markdown can be used) ###
     copyright: "Copyright &copy; {{< current_year >}} DeepCausality. All Rights Reserved. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) for Hugo by [CNCF](https://www.cncf.io)."
     github_edit: "Edit this page on GitHub"
