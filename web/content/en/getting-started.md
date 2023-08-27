@@ -22,8 +22,7 @@ use deep_causality::prelude::*;
 
 ## Code
 
-```rust
-use deep_causality::prelude::*;
-use deep_causality::types::reasoning_types;
+See:
 
-```
+* [Code examples](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/examples)
+* [Tests](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/tests)
