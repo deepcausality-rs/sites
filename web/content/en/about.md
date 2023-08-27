@@ -13,7 +13,7 @@ causal reasoning over complex multi-stage causality models. Deep Causality adds 
 and thus is suitable for real-time applications without additional acceleration hardware.
 
 
-## Who is the author of DeepCausality?
+## Who wrote DeepCausality?
 
 DeepCausality was written by [Marvin Hansen](https://github.com/marvin-hansen) and is used at his 
 company [Emet-Labs](https://emet-labs.com/).

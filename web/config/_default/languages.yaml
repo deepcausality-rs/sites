@@ -44,16 +44,22 @@ en:
       weight: 1
       parent: "docs"
 
+    - identifier: "background"
+      name: "Background"
+      url: "/docs/background/"
+      weight: 2
+      parent: "docs"
+
     - identifier: "context"
       name: "Context"
       url: "/docs/context/"
-      weight: 2
+      weight: 3
       parent: "docs"
 
     - identifier: "causality"
       name: "Causality"
       url: "/docs/causal-structure/"
-      weight: 3
+      weight: 4
       parent: "docs"
 
     - identifier: "getting-started"
