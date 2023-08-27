@@ -56,11 +56,11 @@ en:
       weight: 3
       parent: "docs"
 
-    - identifier: "causality"
-      name: "Causality"
-      url: "/docs/causal-structure/"
-      weight: 4
-      parent: "docs"
+#    - identifier: "concepts"
+#      name: "Concepts"
+#      url: "/docs/concepts/"
+#      weight: 4
+#      parent: "docs"
 
     - identifier: "getting-started"
       name: "Getting Started"
