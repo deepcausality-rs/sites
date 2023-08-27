@@ -1,25 +1,18 @@
 # Project websites
 
-Sites:
-* https://deepcausality.com/about/
+## Sites:
+* Production: https://deepcausality.com/about/
+* Preview (Beta): https://beta-7j9.pages.dev/about/ 
 
-Stack:
+## Stack:
 
-* Hugo
-* LoveIt theme
-* Cloudflare pages
+* [Hugo](https://gohugo.io/)
+* [Dot-Org Hugo Theme](https://github.com/cncf/dot-org-hugo-theme)
+* [Cloudflare pages](https://pages.cloudflare.com/)
 
 ## Hugo
 
 * [Getting Started](https://gohugo.io/getting-started/quick-start/)
-
-## Theme
-
-Documentation:
-
-* [Theme Documentation - Basics](https://hugoloveit.com/theme-documentation-basics/#24-create-your-first-post)
-* [Theme Configuration](https://hugoloveit.com/theme-documentation-basics/#site-configuration)
-* [Github](https://github.com/dillonzq/LoveIt)
 
 ## Cloudflare pages
 
