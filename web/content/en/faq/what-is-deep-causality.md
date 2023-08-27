@@ -1,5 +1,5 @@
 ---
-title: "What is DeepCausality?"
+title: What is DeepCausality?
 weight: 1
 ---
 
