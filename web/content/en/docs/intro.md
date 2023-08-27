@@ -38,9 +38,17 @@ Because of Rust's excellent FFI support, bindings to other programming languages
 
 It's worth mentioning that both PyTorch and TensorFlow interface with Python, but the Python API sits atop a substantial C++ codebase that does all the heavy lifting. TensorFlow was released to the public in 2015, PyTorch a year later in 2016, and back then, it was common practice to write all performance-critical systems in C++ mainly because it was the established gold standard. With Rust, more recently, a first alternative to the C++ dominance in system engineering is becoming viable; therefore, writing emerging libraries in modern Rust paves the way for a fast, robust, and reliable foundation for years to come.
 
+## How is deep causality different from deep learning?
+
+* Free of the [independent and identically distributed data (IID) assumption.](https://towardsdatascience.com/independent-and-identically-distributed-ce250ad1bfa8)
+* Deterministic and explainable causal reasoning.
+* Reasoning over causal collection, graph structure supported.
+* Recursive causal data-structures enable concise expression of arbitrary complex causal structures.
+* Context aware causality reasoning 
+
 ## What is DeepCausality?
 
-DeepCausality is a hypergeometric computational causality library for Rust that contributes:
+DeepCausality is a hypergeometric computational causality library for Rust that contributes several novel concepts:
 
 1.	Hypergeometric recursive causal models
 2.	Hypergeometric context up to four dimensions
