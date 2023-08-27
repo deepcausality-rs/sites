@@ -1,5 +1,5 @@
 ---
-title: "What is Causal State Machine?"
+title: What is Causal State Machine?
 ---
 
 A causal state machine encodes causal entities as types with the actual constraint represented as a causal function.
