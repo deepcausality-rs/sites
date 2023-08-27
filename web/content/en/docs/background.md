@@ -287,7 +287,6 @@ That said, with either one in place, transparent composability becomes practical
 ## Conclusion
 
 While there are many more gaps to fill on the path toward intelligent systems, during the design of DeepCausality, only
-the seven presented gaps were chosen to approach. DeepCausality is only one part of the larger quest of building
-intelligent systems and, therefore, aims to fill the identified gaps and to learn more in the process.
+the seven presented gaps were chosen to approach. 
 
 DeepCausality is available on GitHub: https://github.com/deepcausality-rs/deep_causality/tree/main 
