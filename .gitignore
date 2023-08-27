@@ -4,13 +4,13 @@
 .idea/
 .idea/*.*
 
-/homepage/.hugo_build.lock
+/archive/old_homepage/.hugo_build.lock
 
-/homepage/public
+/archive/old_homepage/public
 
 # Generated files
-/homepage/resources/_gen
-/homepage/resources/_gen/*
+/archive/old_homepage/resources/_gen
+/archive/old_homepage/resources/_gen/*
 /homepage/resources/_gen/*.*
 
 # MacOS stuff
