@@ -12,15 +12,21 @@ DeepCausality is a Rust library that enables fast and efficient causal reasoning
 
 Fundamentally, everything engineers build with deep learning is rooted in statistics under the hood. While deep learning frameworks such as TensorFlow or PyTorch shield developers from the underlying statistics math, it's still under the hood. Specifically, deep learning uses correlation under the hood to map an input (say, a question) to an output (an answer). Since statistics has been around for a long time, deep learning has taken it a step further, but there are still certain limitations with a correlation-based foundation.
 
-Computational causality, on the other hand, utilizes cause-and-effect relationships to go beyond correlation-based predictive models and toward AI systems that can prescribe actions more effectively and autonomously. Fundamentally, causality-based reasoning is deterministic, meaning that the same set of input data feeds into a model and yields the same result, and this is very different from correlation-based deep learning, which may or may not give you a similar answer. Computational causality is actively researched in Academia by leading academics in the field, such as:
+Computational causality, on the other hand, utilizes cause-and-effect relationships to go beyond correlation-based predictive models and toward AI systems that can prescribe actions more effectively and autonomously. Fundamentally, causality-based reasoning is deterministic, meaning that the same set of input data feeds into a model and yields the same result, and this is very different from correlation-based deep learning, which may or may not give you a similar answer. Computational causality is actively researched by leading academics, such as:
 
-* Judea Pearl at UCLA
-* Ilya Shpitser at Johns Hopkins University
-* Miguel Hernan, Causal Lab at Harvard University
-* 	Elias Bareinboim at Columbia University
-* Causality and Machine Learning research at Microsoft Research
+* [Judea Pearl](http://bayes.cs.ucla.edu/jp_home.html) at UCLA
+* [Lucien Hardy](https://perimeterinstitute.ca/people/lucien-hardy) at the Perimeter Institute
+* [Kenneth O. Stanley](https://www.kenstanley.net/home) at OpenAI
+* [Ilya Shpitser](https://www.cs.jhu.edu/~ilyas/) at Johns Hopkins University
+* [Miguel Hernan](https://www.hsph.harvard.edu/miguel-hernan/), [Causal Lab](https://causalab.sph.harvard.edu/) at
+  Harvard University
+* [Elias Bareinboim](https://causalai.net/) at Columbia University
 
-However, it was not until the last five years that the IT industry started exploring and adopting it. Netflix, for example, published in 2022 that they use causality in their recommendation engine. Unfortunately, Netflix secretly guarded its core computational causality technology behind corporate doors. Other companies, like Microsoft Research and Uber Research, contributed meaningful work to the field through their open-source commitment.
+However, it was not until the last five years that the IT industry started exploring and adopting computational causality. Netflix, for example, published in 2022 that they use causality in their recommendation engine. Unfortunately, Netflix did not open sourced its causality software. Other companies contributed meaningful work to the field through their open-source commitment:
+
+* [Causality and Machine Learning](https://www.microsoft.com/en-us/research/group/causal-inference/) at Microsoft
+  Research
+* [Causal ML](https://github.com/uber/causalml) at uber.
 
 Currently, all publicly available research in computational causality relies on libraries written in Python, with Rust not being explored yet. DeepCausality changes that and brings computational causality to Rust.
 
@@ -53,7 +59,7 @@ A causal hypergraph may contain any number of nodes with any number of relations
 
 ### Context
 
-Contemporary computational causality assumes that the modeled causal relations are all there is to a model and, therefore, shifted focus to causal discovery learning to find causal relations in data. Only very recently, leading researchers at Cambridge University started exploring the addition of structure and a temporal context to causality-based deep learning. 
+Contemporary computational causality assumes that the modeled causal relations are all there is to a model and, therefore, shifted focus to causal discovery learning to find causal relations in data. Only very recently, researchers at [Cambridge University started conceptualizing the addition of a temporal context ](https://arxiv.org/abs/2212.00911)to causality-based deep learning. 
 
 DeepCausality already added structure through the hypergeometric representation of causality, but even further, DeepCausality already has complete support for contextualizing causal models. Specifically, a context may be built from multiple data sources or live data streams and then can be accessed from within the causal model, thus allowing efficient reasoning over contextualized data.
 
