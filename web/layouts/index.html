@@ -3,7 +3,7 @@
 
     <div class="hero-grid__col1">
         <h1 class="title">
-            {{ i18n "hero1" }}
+            {{ i18n "hero1" }}<br /><span class="darker">{{ i18n "hero2" }}</span>
         </h1>
 
         <h2 class="subhero">{{ i18n "subhero" }}</h2>
@@ -13,16 +13,45 @@
         <a href="/about/" class="button">{{ i18n "explainerButton" }}</a>
     </div>
 
-    <div class="hero-grid__col2">
-        <img
-                width="585"
-                height="530"
-                src="{{ "img/home-teamwork.png" | relURL }}"
-        alt="People collaborating"
-        loading="eager"
-        />
+<!--    Add custom image later-->
+<!--    <div class="hero-grid__col2">-->
+<!--        <img-->
+<!--                width="585"-->
+<!--                height="530"-->
+<!--                src="{{ "img/home-teamwork.png" | relURL }}"-->
+<!--        alt="People collaborating"-->
+<!--        loading="eager"-->
+<!--        />-->
+<!--    </div>-->
+
+</div>
+
+<h3 class="h4">{{ i18n "sectionTitle" | markdownify }}</h3>
+
+<div class="grid box-grid">
+
+    <div class="shadow-box">
+        <h2>{{ i18n "sectionTitle1" }}</h2>
+        <p>{{ i18n "sectionText1" | markdownify }}</p>
+        <a href="/docs/" class="button">{{ i18n "sectionButton1" }}</a>
+    </div>
+
+    <div class="shadow-box">
+        <h2>{{ i18n "sectionTitle2" }}</h2>
+        <p>{{ i18n "sectionText2" | markdownify }}</p>
+        <a href="/getting-started/" class="button"
+        >{{ i18n "sectionButton2" }}</a
+        >
+    </div>
+
+    <div class="shadow-box">
+        <h2>{{ i18n "sectionTitle3" }}</h2>
+        <p>{{ i18n "sectionText3" | markdownify }}</p>
+        <a href="/faq/" class="button">{{ i18n "sectionButton3" }}</a>
     </div>
 
 </div>
+
+<hr />
 
 {{ end }}
