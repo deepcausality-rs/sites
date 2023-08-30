@@ -1,6 +1,9 @@
 ---
+author: Marvin Hansen
 title: What is Causal State Machine?
+weight: 3
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 A causal state machine encodes causal entities as types with the actual constraint represented as a causal function.
 One or more causal entities form a collection that is encapsulated in an abstraction called a causaloid. The causaloid

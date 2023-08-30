@@ -3,6 +3,7 @@ author: Marvin Hansen
 title: "ArrayGrid - A Faster Tensor"
 date: 2023-07-02
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 {{< toc >}}
 

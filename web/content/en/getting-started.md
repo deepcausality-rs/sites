@@ -1,7 +1,9 @@
 ---
+author: Marvin Hansen
 title: "Getting Started"
 description: "Getting Started with DeepCausality"
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 It takes just steps to get started with DeepCausality:
 

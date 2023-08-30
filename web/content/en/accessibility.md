@@ -1,8 +1,10 @@
 ---
+author: Marvin Hansen
 title: Accessibility Statement
 date: 2023-06-30T15:03:00+08:00
 draft: false
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 
 This commitment to accessibility for all begins with this site and our efforts to ensure all functionality and all content is accessible to everybody.
