@@ -76,3 +76,8 @@ en:
       name: "Blog"
       url: "/blog/"
       weight: 5
+
+    - identifier: "contact"
+      name: "Contact"
+      url: "/contact/"
+      weight: 5

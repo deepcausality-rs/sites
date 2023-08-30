@@ -1,0 +1,30 @@
+hero1:
+  other: DeepCausality
+hero2:
+  other: Causality for Rust
+subhero:
+  other: Computational causality for Rust
+explainerText:
+  other: DeepCausality is a hyper-geometric computational causality library that enables fast and deterministic context-aware causal reasoning. Deep Causality adds only minimal overhead and thus is suitable for real-time applications without additional acceleration hardware.
+explainerButton:
+  other: About
+sectionTitle:
+  other: Get Started
+sectionTitle1:
+  other: Read the Docs
+sectionText1:
+  other: Documentation, Background, and Concept Guides
+sectionButton1:
+  other: Read the Docs
+sectionTitle2:
+  other: Check the code
+sectionText2:
+  other: Code, examples, tests, and more.
+sectionButton2:
+  other: Check the code
+sectionTitle3:
+  other: Read the FAQ
+sectionText3:
+  other: Frequently asked questions
+sectionButton3:
+  other: Read The FAQ

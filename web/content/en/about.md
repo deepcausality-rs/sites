@@ -15,10 +15,11 @@ and thus is suitable for real-time applications without additional acceleration 
 
 ## Who wrote DeepCausality?
 
+
 DeepCausality was written by [Marvin Hansen](https://github.com/marvin-hansen) and is used at his 
 company [Emet-Labs](https://emet-labs.com/).
 
 ## Linux Foundation
 
-DeepCausality is hosted as a sandbox project at the [Linux Foundation for data and artificial intelligence](https://lfaidata.foundation/) (LF AI & Data Foundation).
 
+DeepCausality is hosted as a sandbox project at the [Linux Foundation for data and artificial intelligence](https://lfaidata.foundation/) (LF AI & Data Foundation).
