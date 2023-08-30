@@ -1,8 +1,10 @@
 ---
+author: Marvin Hansen
 title: "Introduction"
 date: 2023-08-27T14:06:21+08:00
 draft: false
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 {{< toc >}}
 

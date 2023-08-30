@@ -1,8 +1,10 @@
 ---
+author: Marvin Hansen
 title: About
 date: 2023-06-30T15:03:00+08:00
 draft: false
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 
 ## DeepCausality

@@ -1,8 +1,10 @@
 ---
+author: Marvin Hansen
 title: "Background"
 date: 2023-08-27T18:42:55+08:00
 draft: false
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 {{< toc >}}
 

@@ -1,8 +1,10 @@
 ---
+author: Marvin Hansen
 title: "Context"
 description: "Context in DeepCausality"
 draft: false
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 
 DeepCausality enables context aware causality reason across data-like, time-like, space-like, and spacetime-like

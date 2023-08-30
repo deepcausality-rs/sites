@@ -1,9 +1,12 @@
 
 ---
+author: Marvin Hansen
 title: "Causality"
 description: "Causal Structure in DeepCausality"
 draft: false
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
+
 
 {{< toc >}}
 

@@ -1,8 +1,10 @@
 ---
+author: Marvin Hansen
 title: Contact
 date: 2023-08-28
 draft: false
 ---
+[//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 {{< rawhtml >}}
 
