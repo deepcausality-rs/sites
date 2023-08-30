@@ -1,8 +1,8 @@
 # Project websites
 
 ## Sites:
-* Production: https://deepcausality.com/about/
-* Preview (Beta): https://beta-7j9.pages.dev/about/ 
+* Production: https://deepcausality.com/
+* Preview (Beta): https://beta-7j9.pages.dev/
 
 ## Stack:
 
