@@ -75,19 +75,27 @@ When deciding on a language for differentiable programming, Google argued agains
 > that may exclude data scientists and other non-expert programmers who frequently use TensorFlow.
 > The ownership model is really great but mostly irrelevant to the problems faced by today's machine learning code
 > implemented in Python."
-> 
+>
 > -- [Why Swift for TensorFlow? ](https://github.com/tensorflow/swift/blob/main/docs/WhySwiftForTensorFlow.md#why-swift-for-tensorflow)
 
 A Rust pre-RFC proposing the addition of differential programming
 support[ went boldly nowhere](https://internals.rust-lang.org/t/pre-rfc-differential-programming-support/11429/20) but
 at least concluded
 that [it's all feasible with Rust](https://internals.rust-lang.org/t/pre-rfc-differential-programming-support/11429/20).
-However, Generic Automatic Differentiation (GAD) became later available as a [separate
+Unfortunately, without the backing of a company like Google, there is little
+chance to implement these kind of advanced features into any programming language. However, Generic Automatic
+Differentiation (GAD) became later available as a [separate
 crate](https://docs.rs/gad/latest/gad/).
 
 ## Conclusion
 
-About a year ago, when I had to decide which language to use for my project DeepCausality, I chose Rust for almost the opposite reasons Google chose. For once, traits in Rust are as powerful as protocols in Swift. I know that because I’ve implemented the entire core of DeepCausality with just a handful of carefully crafted protocols with default implementation. Then, the steep learning curve, while true, is worth taking as every meaningful challenge makes an engineer better. Indeed, working my way through Rust certainly made me a better engineer on many levels, but I still have much to learn. While irrelevant for data scientists, the ownership system is highly relevant for the SRE team running a library cost-efficiently in production.
+About a year ago, when I had to decide which language to use for my project DeepCausality, I chose Rust for almost the
+opposite reasons Google chose. For once, traits in Rust are as powerful as protocols in Swift. I know that because I’ve
+implemented the entire core of DeepCausality with just a handful of carefully crafted protocols with default
+implementation. Then, the steep learning curve, while true, is worth taking as every meaningful challenge makes an
+engineer better. Indeed, working my way through Rust certainly made me a better engineer on many levels, but I still
+have much to learn. While irrelevant for data scientists, the ownership system is highly relevant for the SRE team
+running a library cost-efficiently in production.
 
 However, I fully agree that everyone in the machine learning community works with Python and possibly Mojo if things go
 well. However, there is still the possibility to wrap a Rust machine learning crate in Python to get all the Rust
@@ -96,5 +104,6 @@ codebases for decades, so this migh be the least controversial path forward for 
 
 ## About
 
-[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
+deterministic context-aware
 causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
