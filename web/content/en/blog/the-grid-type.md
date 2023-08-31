@@ -382,3 +382,8 @@ absurd throughput and latency results. And that was the entire purpose of the ex
 get even remotely these benchmarks results with a Tensor type. Tensors remain an invaluable type for higher dimensional
 data in machine learning. For low dimensional (<5) data in performance critical applications, however,the GridArray offers
 an alternative with attractive performance characteristics. 
+
+## About
+
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
