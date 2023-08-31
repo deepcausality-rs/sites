@@ -232,9 +232,10 @@ Start-ups aiming to disrupt existing industries may explore any combination of d
 competitive edge over existing solutions in their industries. From a technical perspective, combining deep causality
 with deep learning models via a shared context is possible.
 Lastly, even remote fields such as theoretical physics, advanced science, or avionics may explore deep causality for its
-ability to express and adjust a complex spacetime context as part of advanced simulations.
+ability to express and adjust a complex spacetime context as part of advanced simulations. DeepCausality is only one part of the larger quest of building intelligent systems and aims to explore novel concepts
+along the way. 
 
-## Conclusion
+## About
 
-DeepCausality is only one part of the larger quest of building intelligent systems and aims to explore novel concepts
-along the way. DeepCausality is available on GitHub: https://github.com/deepcausality-rs/deep_causality/tree/main 
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)

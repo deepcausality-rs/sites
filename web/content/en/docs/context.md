@@ -81,3 +81,7 @@ are known upfront, providing a significant performance boost over tensors. Perfo
 hyper-graphs may grow large with millions of nodes, and obviously, one wants the fastest possible global adjustment in
 those cases.
 
+## About
+
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
