@@ -33,7 +33,7 @@ We already see new numeric Rust libraries, such as [pola-rs](https://www.pola.rs
 most part, ergonomic API
 design.
 
-## The not-so-great
+## The Not-So-Great
 
 As for mature machine libraries, Rust still wraps around large C++ code bases, as it does for TensorFlow and PyTorch. In
 all fairness, rewriting these massive libraries from scratch isn't economically feasible and probably not even necessary
@@ -42,7 +42,7 @@ has [increased significantly](https://lib.rs/science/ml), the
 large number of Rust wrappers around existing libraries confirms that there isn't a high demand for reinventing the
 wheel in a different language.
 
-## The great snake case: Python!
+## Python!
 
 Historically, companies build all their R&D in Python, and when data scientists came up with something of commercial
 value, the engineers ported it to C++ and plugged it into the production system. With the advent of ML servers, the ML
@@ -53,7 +53,7 @@ the slow performance of Python might become a lot less of an issue than it used 
 If you can write your data science work in Python with all the existing great ML libraries while still getting good
 performance by compiling Python with Mojo, why would you rewrite anything in Rust?
 
-## The ugly
+## The Ugly
 
 If there is just one ugly thing about machine learning in Rust, it’s the complete lack of academic research in Rust
 machine learning. In all fairness, the same argument applies to any other non-Python programming language since all
