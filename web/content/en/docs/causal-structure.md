@@ -50,3 +50,8 @@ Then, the entire causaloid-graph can be analyzed in a variety of ways, for examp
 * Reason only over a specific causaloid
 * Reason over all causaloid between a start and stop causaloid.
 * Reason over the shortest path between two causaloid.
+
+## About
+
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
