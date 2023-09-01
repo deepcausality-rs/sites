@@ -8,7 +8,7 @@ author: Marvin Hansen
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 
-![DeepCausality logo](/img/logo-color.png)
+![DeepCausality logo](/img/logo-b.svg)
 
 The Technical Advisory Group to the Linux Foundation AI & Data unanimously voted to accept
 DeepCausality into the Foundation on On Aug/10, 2023. Following the vote, the subsequent onboarding process 
