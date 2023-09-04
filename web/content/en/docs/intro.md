@@ -4,9 +4,23 @@ title: "Introduction"
 date: 2023-08-27T14:06:21+08:00
 draft: false
 ---
+
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 {{< toc >}}
+
+## Overview
+
+Deep causality allows you to apply causal reasoning to complex problems, such as modeling financial markets, that were
+historically too challenging for conventional deep learning.
+
+Deep causality offers multiple benefits such as fast reasoning, low-cost operations due to low computational
+requirements, analyzing numerous feeds of data in real-time, and even reasoning across data that change over time,
+space, and spacetime through an adjustable context.
+
+Examples where DeepCausality can be used, include dynamic control systems in the IoT industry, dynamic monitoring
+systems in the cloud industry, dynamic market models in the financial industry, and start-ups aiming to disrupt existing
+industries may explore any combination of deep learning and DeepCausality to gain a competitive edge.
 
 ## What is computational causality?
 
@@ -45,18 +59,9 @@ not being explored yet. DeepCausality changes that and brings computational caus
 ## Why Rust?
 
 DeepCausality is designed to be fast, efficient, robust, and reliable from its inception. Rust was chosen as the
-programming language because it fully aligns with the project goals.
-Especially Rust's memory safety was the decisive argument, considering that causal models may grow large and complex and
-hence require strong memory guarantees to operate reliably.
-Because of Rust's excellent FFI support, bindings to other programming languages, for example, Python, are fundamentally
-supported and might be added in the future.
-
-It's worth mentioning that both PyTorch and TensorFlow interface with Python, but the Python API sits atop a substantial
-C++ codebase that does all the heavy lifting. TensorFlow was released to the public in 2015, PyTorch a year later in
-2016, and back then, it was common practice to write all performance-critical systems in C++ mainly because it was the
-established gold standard. With Rust, more recently, a first alternative to the C++ dominance in system engineering is
-becoming viable; therefore, writing emerging libraries in modern Rust paves the way for a fast, robust, and reliable
-foundation for years to come.
+programming language because it fully aligns with the project goals. Rust’s memory safety was the decisive argument,
+considering that causal models may grow large and complex and require strong memory guarantees to operate reliably and
+cost-effectively.
 
 ## What is DeepCausality?
 
@@ -232,10 +237,12 @@ Start-ups aiming to disrupt existing industries may explore any combination of d
 competitive edge over existing solutions in their industries. From a technical perspective, combining deep causality
 with deep learning models via a shared context is possible.
 Lastly, even remote fields such as theoretical physics, advanced science, or avionics may explore deep causality for its
-ability to express and adjust a complex spacetime context as part of advanced simulations. DeepCausality is only one part of the larger quest of building intelligent systems and aims to explore novel concepts
-along the way. 
+ability to express and adjust a complex spacetime context as part of advanced simulations. DeepCausality is only one
+part of the larger quest of building intelligent systems and aims to explore novel concepts
+along the way.
 
 ## About
 
-[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
+deterministic context-aware
 causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)

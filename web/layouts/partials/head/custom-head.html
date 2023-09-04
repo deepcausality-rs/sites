@@ -13,13 +13,3 @@
 {{ if (eq .Kind "home") }}
 <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" media="all">
 {{ end }}
-
-<link rel="manifest" href="/site.webmanifest">
-<meta name="mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-title" content="DeepCausality" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-<script>
-    if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/scripts/sw.js');
-    };
-</script>
