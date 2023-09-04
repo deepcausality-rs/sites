@@ -27,18 +27,32 @@ industries may explore any combination of deep learning and DeepCausality to gai
 Fundamentally, everything engineers build with deep learning is rooted in statistics under the hood. While deep learning
 frameworks such as TensorFlow or PyTorch shield developers from the underlying statistics math, it's still under the
 hood. Specifically, deep learning uses correlation under the hood to map an input (say, a question) to an output (an
-answer). Since statistics has been around for a long time, deep learning has taken it a step further, but there are
-still certain limitations with a correlation-based foundation.
+answer).
+
+Contemporary deep learning has taken statistics one step further, but there are still certain
+limitations with its correlation-based foundation. For one, correlation leads to non-determinism
+because, just by chance, a variable can correlate with otherwise random values. Then,
+separating the signal from the noise requires very large data quantities. More fundamentally,
+deep learning requires that data used during training must follow the same distribution as the
+data the model encounters in production. If that is not the case, then deep learning is
+insufficient, and the model requires re-training. When the data distribution is either unstable or
+continuously shifting, deep learning falls short.
 
 Computational causality, on the other hand, utilizes cause-and-effect relationships to go beyond correlation-based
-predictive models and toward AI systems that can prescribe actions more effectively and autonomously. Fundamentally,
-causality-based reasoning is deterministic, meaning that the same set of input data feeds into a model and yields the
-same result, and this is very different from correlation-based deep learning, which may or may not give you a similar
-answer. Computational causality is actively researched by leading academics, such as:
+predictive models and toward AI systems that can prescribe actions more effectively and autonomously. Then,
+computational causality is data distribution invariant meaning it is not necessary that training, testing, and production
+data must adhere to the same data distribution. Fundamentally, causality-based reasoning is deterministic, meaning that the same set of input data feeds into a model and yields the same result, and this is very different from correlation-based deep learning, which may or may not give you a similar answer. 
+
+Computational causality and deep learning operate at the exact opposite ends of the spectrum meaning that
+they are complimentary in the sense that computational causality excels where deep learning falls short 
+and, likewise, deep learning excels where causality falls short. Specifically, computational causality excels
+at fast deterministic reasoning using only very little data, but cannot do generative models such as large languages
+models or image generations, a traditional strength of deep learning.
+
+Computational causality is actively researched by leading academics, such as:
 
 * [Judea Pearl](http://bayes.cs.ucla.edu/jp_home.html) at UCLA
 * [Lucien Hardy](https://perimeterinstitute.ca/people/lucien-hardy) at the Perimeter Institute
-* [Kenneth O. Stanley](https://www.kenstanley.net/home) at OpenAI
 * [Ilya Shpitser](https://www.cs.jhu.edu/~ilyas/) at Johns Hopkins University
 * [Miguel Hernan](https://www.hsph.harvard.edu/miguel-hernan/), [Causal Lab](https://causalab.sph.harvard.edu/) at
   Harvard University
