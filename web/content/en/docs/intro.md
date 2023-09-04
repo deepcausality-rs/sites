@@ -11,10 +11,8 @@ draft: false
 
 ## Overview
 
-Deep causality allows you to apply causal reasoning to complex problems, such as modeling financial markets, that were
-historically too challenging for conventional deep learning.
-
-Deep causality offers multiple benefits such as fast reasoning, low-cost operations due to low computational
+DeepCausality is a hyper-geometric computational causality library that enables fast and deterministic context aware
+causal reasoning. Deep causality offers multiple benefits such as fast reasoning, low-cost operations due to low computational
 requirements, analyzing numerous feeds of data in real-time, and even reasoning across data that change over time,
 space, and spacetime through an adjustable context.
 

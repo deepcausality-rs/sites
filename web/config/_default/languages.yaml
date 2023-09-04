@@ -39,7 +39,7 @@ en:
       weight: 2
 
     - identifier: "Intro"
-      name: "Intro"
+      name: "Introduction"
       url: "/docs/intro/"
       weight: 1
       parent: "docs"
@@ -50,17 +50,11 @@ en:
       weight: 2
       parent: "docs"
 
-    - identifier: "context"
-      name: "Context"
-      url: "/docs/context/"
+    - identifier: "concepts"
+      name: "Concepts"
+      url: "/docs/concepts/"
       weight: 3
       parent: "docs"
-
-#    - identifier: "concepts"
-#      name: "Concepts"
-#      url: "/docs/concepts/"
-#      weight: 4
-#      parent: "docs"
 
     - identifier: "getting-started"
       name: "Getting Started"

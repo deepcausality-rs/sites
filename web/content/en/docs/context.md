@@ -2,16 +2,18 @@
 author: Marvin Hansen
 title: "Context"
 description: "Context in DeepCausality"
-draft: false
+draft: true
 ---
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
+
+{{< toc >}}
+
 
 
 DeepCausality enables context aware causality reason across data-like, time-like, space-like, and spacetime-like
 entities stored within a context-hyper-graphs. Fundamentally, this allows scalable contextualization up to four
 dimensions.
 
-{{< toc >}}
 
 
 ## Data Context
