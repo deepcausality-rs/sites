@@ -4,27 +4,49 @@ title: "Introduction"
 date: 2023-08-27T14:06:21+08:00
 draft: false
 ---
+
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 {{< toc >}}
 
+## Overview
+
+DeepCausality is a hyper-geometric computational causality library that enables fast and deterministic context aware
+causal reasoning. Deep causality offers multiple benefits such as fast reasoning, low-cost operations due to low computational
+requirements, analyzing numerous feeds of data in real-time, and even reasoning across data that change over time,
+space, and spacetime through an adjustable context.
+
+Examples where DeepCausality can be used, include dynamic control systems in the IoT industry, dynamic monitoring
+systems in the cloud industry, dynamic market models in the financial industry, and start-ups aiming to disrupt existing
+industries may explore any combination of deep learning and DeepCausality to gain a competitive edge.
+
 ## What is computational causality?
 
-Fundamentally, everything engineers build with deep learning is rooted in statistics under the hood. While deep learning
-frameworks such as TensorFlow or PyTorch shield developers from the underlying statistics math, it's still under the
-hood. Specifically, deep learning uses correlation under the hood to map an input (say, a question) to an output (an
-answer). Since statistics has been around for a long time, deep learning has taken it a step further, but there are
-still certain limitations with a correlation-based foundation.
+
+Contemporary deep learning has taken statistics one step further, but there are still certain
+limitations with its correlation-based foundation. For more details, see the [background section.](/docs/background/)
+For one, correlation leads to non-determinism because, just by chance, a variable can correlate with 
+otherwise random values. Then, separating the signal from the noise requires very large data quantities. 
+More fundamentally, deep learning requires that data used during training must follow the same distribution as the
+data the model encounters in production. If that is not the case, then deep learning is
+insufficient, and the model requires re-training. When the data distribution is either unstable or
+continuously shifting, deep learning falls short.
 
 Computational causality, on the other hand, utilizes cause-and-effect relationships to go beyond correlation-based
-predictive models and toward AI systems that can prescribe actions more effectively and autonomously. Fundamentally,
-causality-based reasoning is deterministic, meaning that the same set of input data feeds into a model and yields the
-same result, and this is very different from correlation-based deep learning, which may or may not give you a similar
-answer. Computational causality is actively researched by leading academics, such as:
+predictive models and toward AI systems that can prescribe actions more effectively and autonomously. Then,
+computational causality is data distribution invariant meaning it is not necessary that training, testing, and production
+data must adhere to the same data distribution. Fundamentally, causality-based reasoning is deterministic, meaning that the same set of input data feeds into a model and yields the same result, and this is very different from correlation-based deep learning, which may or may not give you a similar answer. 
+
+Computational causality and deep learning operate at the exact opposite ends of the spectrum meaning that
+they are complimentary in the sense that computational causality excels where deep learning falls short 
+and, likewise, deep learning excels where causality falls short. Specifically, computational causality excels
+at fast deterministic reasoning using only very little data, but cannot do generative models such as large languages
+models or image generations, a traditional strength of deep learning.
+
+Computational causality is actively researched by leading academics, such as:
 
 * [Judea Pearl](http://bayes.cs.ucla.edu/jp_home.html) at UCLA
 * [Lucien Hardy](https://perimeterinstitute.ca/people/lucien-hardy) at the Perimeter Institute
-* [Kenneth O. Stanley](https://www.kenstanley.net/home) at OpenAI
 * [Ilya Shpitser](https://www.cs.jhu.edu/~ilyas/) at Johns Hopkins University
 * [Miguel Hernan](https://www.hsph.harvard.edu/miguel-hernan/), [Causal Lab](https://causalab.sph.harvard.edu/) at
   Harvard University
@@ -45,18 +67,9 @@ not being explored yet. DeepCausality changes that and brings computational caus
 ## Why Rust?
 
 DeepCausality is designed to be fast, efficient, robust, and reliable from its inception. Rust was chosen as the
-programming language because it fully aligns with the project goals.
-Especially Rust's memory safety was the decisive argument, considering that causal models may grow large and complex and
-hence require strong memory guarantees to operate reliably.
-Because of Rust's excellent FFI support, bindings to other programming languages, for example, Python, are fundamentally
-supported and might be added in the future.
-
-It's worth mentioning that both PyTorch and TensorFlow interface with Python, but the Python API sits atop a substantial
-C++ codebase that does all the heavy lifting. TensorFlow was released to the public in 2015, PyTorch a year later in
-2016, and back then, it was common practice to write all performance-critical systems in C++ mainly because it was the
-established gold standard. With Rust, more recently, a first alternative to the C++ dominance in system engineering is
-becoming viable; therefore, writing emerging libraries in modern Rust paves the way for a fast, robust, and reliable
-foundation for years to come.
+programming language because it fully aligns with the project goals. Rust’s memory safety was the decisive argument,
+considering that causal models may grow large and complex and require strong memory guarantees to operate reliably and
+cost-effectively.
 
 ## What is DeepCausality?
 
@@ -232,10 +245,12 @@ Start-ups aiming to disrupt existing industries may explore any combination of d
 competitive edge over existing solutions in their industries. From a technical perspective, combining deep causality
 with deep learning models via a shared context is possible.
 Lastly, even remote fields such as theoretical physics, advanced science, or avionics may explore deep causality for its
-ability to express and adjust a complex spacetime context as part of advanced simulations. DeepCausality is only one part of the larger quest of building intelligent systems and aims to explore novel concepts
-along the way. 
+ability to express and adjust a complex spacetime context as part of advanced simulations. DeepCausality is only one
+part of the larger quest of building intelligent systems and aims to explore novel concepts
+along the way.
 
 ## About
 
-[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
+deterministic context-aware
 causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
