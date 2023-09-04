@@ -24,16 +24,12 @@ industries may explore any combination of deep learning and DeepCausality to gai
 
 ## What is computational causality?
 
-Fundamentally, everything engineers build with deep learning is rooted in statistics under the hood. While deep learning
-frameworks such as TensorFlow or PyTorch shield developers from the underlying statistics math, it's still under the
-hood. Specifically, deep learning uses correlation under the hood to map an input (say, a question) to an output (an
-answer).
 
 Contemporary deep learning has taken statistics one step further, but there are still certain
-limitations with its correlation-based foundation. For one, correlation leads to non-determinism
-because, just by chance, a variable can correlate with otherwise random values. Then,
-separating the signal from the noise requires very large data quantities. More fundamentally,
-deep learning requires that data used during training must follow the same distribution as the
+limitations with its correlation-based foundation. For more details, see the [background section.](/docs/background/)
+For one, correlation leads to non-determinism because, just by chance, a variable can correlate with 
+otherwise random values. Then, separating the signal from the noise requires very large data quantities. 
+More fundamentally, deep learning requires that data used during training must follow the same distribution as the
 data the model encounters in production. If that is not the case, then deep learning is
 insufficient, and the model requires re-training. When the data distribution is either unstable or
 continuously shifting, deep learning falls short.
