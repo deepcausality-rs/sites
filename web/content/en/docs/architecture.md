@@ -129,7 +129,7 @@ It is important to know that all these node types are immutable by default and c
 *	Temporal + Adjustable | AdjustableTime
 
 
-![Context architecture of DeepCausality](/img/docs/context-architecture.png)
+![Context architecture of DeepCausality](/img/docs/architecture-context.png)
 
 The contextoid does not depend on the adjustable trait meaning, and a context may freely mix immutable and mutable node types. Furthermore, DeepCausality does not provide a global update mechanism with the understanding that the details of a node update are subject to the actual implementation. 
 
