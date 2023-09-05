@@ -44,16 +44,22 @@ en:
       weight: 1
       parent: "docs"
 
+    - identifier: "architecture"
+      name: "Architecture"
+      url: "/docs/architecture/"
+      weight: 2
+      parent: "docs"
+
     - identifier: "background"
       name: "Background"
       url: "/docs/background/"
-      weight: 2
+      weight: 3
       parent: "docs"
 
     - identifier: "concepts"
       name: "Concepts"
       url: "/docs/concepts/"
-      weight: 3
+      weight: 4
       parent: "docs"
 
     - identifier: "getting-started"
