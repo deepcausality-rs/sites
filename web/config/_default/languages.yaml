@@ -13,8 +13,8 @@ en:
 
     ### calls to action ###
     main_cta:
-      text: "GitHub"
-      link: "https://github.com/deepcausality-rs/deep_causality"
+      text: "Get Started"
+      link: "/getting-started/"
 
     footer_cta:
       text: "GitHub"
@@ -61,11 +61,6 @@ en:
       url: "/docs/concepts/"
       weight: 4
       parent: "docs"
-
-    - identifier: "getting-started"
-      name: "Getting Started"
-      url: "/getting-started/"
-      weight: 3
 
     - identifier: "faq"
       name: "FAQs"
