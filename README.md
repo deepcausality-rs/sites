@@ -3,8 +3,19 @@
 # Project websites
 
 ## Sites:
-* Production: https://deepcausality.com/
-* Preview (Beta): https://beta-7j9.pages.dev/
+* Production: [www.deepcausality.com](https://deepcausality.com/)
+* Preview: [preview.sites-byv.pages.dev](https://preview.sites-byv.pages.dev)
+
+## Contribute:
+
+1) Clone this repository
+2) Either use preview the branch or create new branch
+3) Modify the content as you see fit
+4) Create a pull request
+5) Wait for the preview build to complete (~1 min) and check: [preview.sites-byv.pages.dev](https://preview.sites-byv.pages.dev)
+
+By default the build system only builds and deploys the main branch into the production site meaning,
+if your changes are not on the production site, then your PR has not been merged into main branch yet.
 
 ## Stack:
 
