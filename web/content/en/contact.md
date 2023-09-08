@@ -49,7 +49,7 @@ margin-top: 6px;
 
 .col-75 {
 float: left;
-width: 75%;
+width: 80%;
 margin-top: 6px;
 }
 
@@ -63,7 +63,7 @@ clear: both;
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
 .col-25, .col-75, input[type=submit] {
-width: 70%;
+width: 80%;
 margin-top: 0;
 }
 }
