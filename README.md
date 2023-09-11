@@ -12,7 +12,6 @@
 2) Modify the content as you see fit
 3) Create a pull request
 
-
 ## Stack:
 
 * [Hugo](https://gohugo.io/)
