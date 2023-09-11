@@ -4,21 +4,14 @@
 
 ## Sites:
 * Production: [www.deepcausality.com](https://deepcausality.com/)
-* Preview: [preview.sites-byv.pages.dev](https://preview.sites-byv.pages.dev)
+* Preview: @TODO
 
 ## Contribute:
 
 1) Clone this repository
-2) Either use preview the branch or create new branch
-3) Modify the content as you see fit
-4) Create a pull request
-5) Wait for the preview build to complete (takes ~1-2 min) and check: [preview.sites-byv.pages.dev](https://preview.sites-byv.pages.dev)
+2) Modify the content as you see fit
+3) Create a pull request
 
-By default the build system automatically builds and deploys the main branch into the production site. If your changes 
-are not on the production site, then your PR has not been merged into main yet.
-
-When accessing the preview build website for the first time, it’s possible that cloudflare's security system 
-asks you to put an email to receive a login code. Please do so otherwise you will not see the preview build page.  
 
 ## Stack:
 

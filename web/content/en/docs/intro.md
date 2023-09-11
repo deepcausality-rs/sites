@@ -13,8 +13,8 @@ draft: false
 
 DeepCausality is a hyper-geometric computational causality library that enables fast and deterministic context aware
 causal reasoning. Deep causality offers multiple benefits such as fast reasoning, low-cost operations due to low computational
-requirements, analyzing numerous feeds of data in real-time, and even reasoning across data that change over time,
-space, and spacetime through an adjustable context.
+requirements, analyzing numerous data feeds in real-time, and even reasoning across data that change over time,
+space,and spacetime through an adjustable context.
 
 Examples where DeepCausality can be used, include dynamic control systems in the IoT industry, dynamic monitoring
 systems in the cloud industry, dynamic market models in the financial industry, and start-ups aiming to disrupt existing
