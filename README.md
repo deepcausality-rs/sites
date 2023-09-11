@@ -1,24 +1,29 @@
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
-# Project websites
+# Project website
 
-## Sites:
 * Production: [www.deepcausality.com](https://deepcausality.com/)
-* Preview: @TODO
+* Preview (beta): [https://beta-7j9.pages.dev](https://beta-7j9.pages.dev/)
 
-## Contribute:
+## Contribute
 
 1) Clone this repository
 2) Modify the content as you see fit
 3) Create a pull request
 
+## Preview (beta) site
 
-## Stack:
+Currently, the preview (beta) site is [build from a fork](https://github.com/marvin-hansen/sites) because of
+an open [issue that prevents CF page deployments from pull requests](https://github.com/cloudflare/pages-action/issues/94). 
+Ideally, a PR from should trigger rebuild of the preview site, but somehow that's currently not possible with the
+official cloudflare GitHub actions. Contributions to fix this are welcome. 
+
+
+## Stack
 
 * [Hugo](https://gohugo.io/)
 * [Dot-Org Hugo Theme](https://github.com/cncf/dot-org-hugo-theme)
 * [Cloudflare pages](https://pages.cloudflare.com/)
-* 
 
 ## Hugo
 
