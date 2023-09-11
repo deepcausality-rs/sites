@@ -12,11 +12,13 @@
 2) Modify the content as you see fit
 3) Create a pull request
 
+
 ## Stack:
 
 * [Hugo](https://gohugo.io/)
 * [Dot-Org Hugo Theme](https://github.com/cncf/dot-org-hugo-theme)
 * [Cloudflare pages](https://pages.cloudflare.com/)
+* 
 
 ## Hugo
 
