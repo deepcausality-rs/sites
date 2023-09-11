@@ -1,8 +1,4 @@
-name: Preview Cloudflare Pages
-
-on:
-  pull_request:
-    branches: [ "main" ]
+on: [pull_request]
 
 jobs:
   publish:
@@ -17,7 +13,6 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
-
       # Run a build step here if your project requires
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
