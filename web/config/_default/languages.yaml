@@ -13,7 +13,7 @@ en:
 
     ### calls to action ###
     main_cta:
-      text: "Get Started"
+      text: "Getting Started"
       link: "/getting-started/"
 
     footer_cta:
@@ -34,7 +34,7 @@ en:
       weight: 1
 
     - identifier: "docs"
-      name: "Docs"
+      name: "Documentation"
       url: "/docs/"
       weight: 2
 
@@ -63,16 +63,22 @@ en:
       parent: "docs"
 
     - identifier: "faq"
-      name: "FAQs"
+      name: "FAQ"
       url: "/faq/"
+      weight: 5
+      parent: "docs"
+
+    - identifier: "community"
+      name: "Community"
+      url: "/community/"
       weight: 4
 
     - identifier: "blog"
       name: "Blog"
       url: "/blog/"
-      weight: 5
+      weight: 6
 
     - identifier: "contact"
       name: "Contact"
       url: "/contact/"
-      weight: 5
+      weight: 7
