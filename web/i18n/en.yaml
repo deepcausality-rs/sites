@@ -9,22 +9,22 @@ explainerText:
 explainerButton:
   other: About
 sectionTitle:
-  other: Get Started
+  other: Getting Started
 sectionTitle1:
-  other: Read the Docs
+  other: Documentation
 sectionText1:
-  other: Documentation, background, and concepts
+  other: Documentation, background, and concepts.
 sectionButton1:
-  other: Read the Docs
+  other: Documentation
 sectionTitle2:
-  other: Check the code
+  other: Community
 sectionText2:
-  other: Code, examples, tests, and more
+  other: Discussions, email lists, and more.
 sectionButton2:
-  other: Check the code
+  other: Community
 sectionTitle3:
-  other: Read the FAQ
+  other: Getting Started
 sectionText3:
-  other: Frequently asked questions
+  other: Code, examples, and more.
 sectionButton3:
-  other: Read The FAQ
+  other: Getting Started
