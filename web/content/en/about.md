@@ -14,12 +14,13 @@ causal reasoning over complex multi-stage causality models. Deep Causality adds 
 and thus is suitable for real-time applications without additional acceleration hardware. See
 the [documentation for more](/docs/intro/).
 
-DeepCausality was written by Marvin Hansen and is used at his company Emet-Labs.
-
+DeepCausality is maintained by [Marvin Hansen](https://github.com/marvin-hansen) and is sponsored by his
+company [Emet-Labs](https://emet-labs.com/).
 
 ## Linux Foundation
 
-DeepCausality is hosted as a sandbox project at the [Linux Foundation for data and artificial intelligence](https://lfaidata.foundation/).
+DeepCausality is hosted as a sandbox project at
+the [Linux Foundation for data and artificial intelligence](https://lfaidata.foundation/).
 The Linux Foundation is the world’s leading home for collaboration on open source software, hardware, standards, and
 data. Linux Foundation projects are critical to the world’s infrastructure including Linux, Kubernetes, Node.js, ONAP,
 RISC-V, SPDX, OpenChain, and more. The Linux Foundation focuses on leveraging best practices and addressing the
