@@ -283,12 +283,10 @@ becomes a meaningful challenge. It is possible to overcome these challenges, but
 expressibility with uniformity and generalization with specialization. However, the more complex structural design often
 results in better performance due to preserving static dispatching. That said, with either one in place, transparent
 composability becomes practical and serves as a good design principle.
-l
 
-## Conclusion
 
-While there are many more gaps to fill on the path toward intelligent systems, while designing DeepCausality, only the
-seven presented gaps were chosen to tackle.
+**Next:** [Concepts](/docs/concepts/)
+
 
 ## About
 

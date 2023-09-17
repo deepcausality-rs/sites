@@ -161,6 +161,8 @@ Each type extension is about ten lines, meaning all five require less code than 
 leaving the core logic in one place. A potential bugfix applied to the default implementation propagates to all five
 type extensions, thus significantly simplifying maintenance.
 
+**Next:** [Background](/docs/background/)
+
 ## About
 
 [DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and

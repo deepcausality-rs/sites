@@ -246,6 +246,9 @@ advanced science, or avionics may explore deep causality for its ability to expr
 context as part of advanced simulations. DeepCausality is only one part of the larger quest of building intelligent
 systems and aims to explore novel concepts along the way.
 
+**Next:** [Architecture](/docs/architecture/)
+
+
 ## About
 
 [DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
