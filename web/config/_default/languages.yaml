@@ -21,7 +21,7 @@ en:
       link: "https://github.com/deepcausality-rs/deep_causality"
 
     ### copyright (markdown can be used) ###
-    copyright: "Copyright &copy; {{< current_year >}} DeepCausality. All Rights Reserved. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) by [CNCF](https://www.cncf.io)."
+    copyright: "Copyright &copy; {{< current_year >}} DeepCausality. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) by [CNCF](https://www.cncf.io)."
     github_edit: "Edit this page on GitHub"
 
   ### menu ###
