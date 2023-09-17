@@ -11,10 +11,9 @@ custom_css: []
 ### default social share image (can also be set per lang) ###
 images: ["/img/deep-causality-social-share.jpg"]
 
-
 github:
   repo_url: "https://github.com/deepcausality-rs/sites/tree/main/web"
-  show_edit_link: true
+  show_edit_link: false
 
 social_links:
   devstats: ""
