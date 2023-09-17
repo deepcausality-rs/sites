@@ -7,44 +7,62 @@ author: Marvin Hansen
 
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
-
 ## Overview
 
-DeepCausality v.0.6 supports now multiple contexts. The previous context API remains the same, meaning all existing code should compile as before. However, new API functionality was added to interact with additional contexts to enable more advanced use cases. 
+Overview DeepCausality v.0.6 now supports multiple contexts. The previous context API remains the same, meaning all
+existing code should compile as before. However, new API functionality was added to interact with additional contexts to
+enable more advanced use cases.
 
 ## Problem
 
-In the financial industry, when modelling synthetics such as future spreads, multiple contexts apply to the instrument. Specifically, when modelling a classic long-short-term spread, in total three contexts apply, one for the long-term future contract, a second one for the short-term contract, and a third one for the resulting spread. In previous versions of DeepCausality, all three context could only be stored in one context, which becomes cumbersome to maintain over time.
+To deal with problems in the financial industry when modelling synthetics such as future spreads, multiple contexts
+apply to the instrument. Specifically, when modelling a classic long-short-term spread, in total three contexts apply,
+one for the long-term future contract, a second one for the short-term contract, and a final one for the resulting
+spread. In previous versions of DeepCausality, all three context could only be stored in one context, which becomes
+cumbersome to maintain over time.
 
-Similarly, in the IoT industry, multiple contexts may arise from different sensor networks and therefore require more than one context. 
+Similarly, in the IoT industry, multiple contexts may arise from different sensor networks and therefore require more
+than one context.
 
 ## Concepts
 
-DeepCausality enables contextual causal reasoning across data that change over time, space, and spacetime through an adjustable context. DeepCausality comes with four default node types that can be stored in a context:
-*	Data – T
-*	Space - T
-*	Time - T
-*	SpaceTime - T
+DeepCausality enables contextual causal reasoning across data that change over time, space, and spacetime through an
+adjustable context. DeepCausality comes with four default node types that can be stored in a context:
 
-For the data node, the generic type T refers to the exact embedded data, which might be a primitive (i32, u64, etc) type or a struct. For time and spacetime, T refers to the time unit. When time is represented as low resolution, say years and weeks, then a U8 integer should suffice, whereas for higher resolution time, say minutes, it would require a larger number type, say an u32. For space, T represents the coordinates, and depending on the requirements, one might choose an i32 for whole numbers or a f64 for double-precision floats.
+* Data – T
+* Space - T
+* Time - T
+* SpaceTime - T
 
-More comprehensible customization of time, spacetime, or space nodes requires the implementation of the corresponding traits in a custom type.
+For the data node, the generic type T refers to the exact embedded data, which might be a primitive (i32, u64, etc) type
+or a struct. For time and spacetime, T refers to the time unit. When time is represented as low resolution, say years
+and weeks, then a U8 integer should suffice, whereas for higher resolution time, say minutes, it would require a larger
+number type, say an u32. For space, T represents the coordinates, and depending on the requirements, one might choose an
+i32 for whole numbers or a f64 for double-precision floats.
+
+More comprehensible customization of time, spacetime, or space nodes requires the implementation of the corresponding
+traits in a custom type.
 
 Also, for each of the four default node types, adjustable equivalents exist in the library:
 
-*	AdjustableData – T
-*	AdjustableSpace - T
-*	AdjustableTime - T
-*	AdjustableSpaceTime - T
+* AdjustableData – T
+* AdjustableSpace - T
+* AdjustableTime - T
+* AdjustableSpaceTime - T
 
-The difference is that the node types are immutable by default, whereas the adjustable node types can be modified (adjusted) by implementing the adjustable trait. Please refer to the tests for details.
+The difference is that the node types are immutable by default, whereas the adjustable node types can be modified (
+adjusted) by implementing the adjustable trait. Please refer to the tests for details.
 
-DeepCausality comes with a type alias, "BaseContext” that refers to a context that uses only the default node types provided by the library for smaller tasks or testing. When the default node types are insufficient, the context type allows more flexibility to mix default and custom types as needed. For the code examples below, the BaseCotext is used for simplicity.
-
+DeepCausality comes with a type alias, "BaseContext” that refers to a context that uses only the default node types
+provided by the library for smaller tasks or testing. When the default node types are insufficient, the context type
+allows more flexibility to mix default and custom types as needed. For the code examples below, the BaseCotext is used
+for simplicity.
 
 ## Create a new context
 
-You create a new context by calling the constructor with capacity. The capacity expands automatically once the initial capacity has been reached, but for performance reasons, it's best to set a reasonable initial capacity with some headroom.
+You create a new context by calling the constructor with capacity. The capacity expands automatically once the initial
+capacity has been reached, but for performance reasons, it's best to set a reasonable initial capacity with some
+headroom.
 
 ```rust
 use deep_causality::prelude::*;
@@ -60,7 +78,8 @@ fn get_context<'l>() -> BaseContext<'l> {
 
 ### Add nodes & edges to the default context
 
-Once a context has been created, you can freely add nodes and edges to the default context. The API for the default context is largely self-explanatory with the usual CRUD operations.
+Once a context has been created, you can freely add nodes and edges to the default context. The API for the default
+context is largely self-explanatory with the usual CRUD operations.
 
 ```rust
 use deep_causality::prelude::*;
@@ -75,27 +94,32 @@ fn main() {
 }
 ``` 
 
-For more examples, please see the [unit tests](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/tests).
+For more examples, please see
+the [unit tests](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/tests).
 
 ## Create an additional context
 
-In a scenario that requires more than one context, DeepCausality supports the addition of an arbitrary number of additional contexts.
+In a scenario that requires more than one context, DeepCausality supports the addition of an arbitrary number of
+additional contexts.
 
-You add an additional context using the extra_ctx_add_new method, and this creates a new additional context and returns the generated context ID. The Boolean argument determines if the newly created context is set as default for all operations. Please be aware of the following:
+You add an additional context using the extra_ctx_add_new method, and this creates a new additional context and returns
+the generated context ID. The Boolean argument determines if the newly created context is set as default for all
+operations. Please be aware of the following:
 
-1)	You can only create an additional context but not delete one.
-2)	Because of 1), context id’s are strictly sequential
-3)	Before using an additional context, you have to ensure it has been set
+1) You can only create an additional context but not delete one.
+2) Because of 1), context id’s are strictly sequential
+3) Before using an additional context, you have to ensure it has been set
 
-The API is designed so that you have to set a context to use all API functions prefixed with extra_ctx. In practice, this entails the following workflow:
+The API is designed so that you have to set a context to use all API functions prefixed with extra_ctx. In practice,
+this entails the following workflow:
 
-1)	Set context ID to the correct additional context
-2)	Operate on the additional context
-3)	Unset context ID or switch to another context
+1) Set context ID to the correct additional context
+2) Operate on the additional context
+3) Unset context ID or switch to another context
 
-
-It is important to track context IDs in the actual application, for example, in a HashMap, to prevent accidentally modifying the wrong context. The API provides functionality to retrieve the current context ID so you can test programmatically whether the right context is already set and, if not, set it correctly.
-
+It is important to track context IDs in the actual application, for example, in a HashMap, to prevent accidentally
+modifying the wrong context. The API provides functionality to retrieve the current context ID so you can test
+programmatically whether the right context is already set and, if not, set it correctly.
 
 ```rust
 use deep_causality::prelude::*;
@@ -139,7 +163,9 @@ fn main() {
 
 ## Modify an additional context
 
-Once the correct context has been set, all API functions prefixed with extra_ctx operate on the set context. The extra context API mirrors the regular context API in functionality. If you accidentally call an API function without the extra_ctx prefix, you operate against the default index and may encounter unexpected results.
+Once the correct context has been set, all API functions prefixed with extra_ctx operate on the set context. The extra
+context API mirrors the regular context API in functionality. If you accidentally call an API function without the
+extra_ctx prefix, you operate against the default index and may encounter unexpected results.
 
 ```rust
 use deep_causality::prelude::*;
@@ -188,8 +214,11 @@ fn main() {
 
 ## Accessing an additional context
 
-Accessing an additional context from within a causal model works the exact same way as accessing the default context by calling the corresponding get method. For the main context, it's get_node, and for an additional context, its extra_ctx_get_node. specifically, when constructing a causaloid, you can specify either a context-free causaloid or a contextual causaloid. The example below shows how to build a contextualized causaloid that accesses both, the default context and an additional context.
-
+Accessing an additional context from within a causal model works the exact same way as accessing the default context by
+calling the corresponding get method. For the main context, it's get_node, and for an additional context, its
+extra_ctx_get_node. specifically, when constructing a causaloid, you can specify either a context-free causaloid or a
+contextual causaloid. The example below shows how to build a contextualized causaloid that accesses both, the default
+context and an additional context.
 
 ```rust
 use deep_causality::prelude::*;
@@ -243,11 +272,12 @@ fn main() {
 }
 ``` 
 
-Because context is passed as an immutable reference into the causal model, the model cannot modify its context, which means updating the context must happen before evaluating a causal model using the context. For more details on the context design, see the the architecture documentation.
-
-
+Because context is passed as an immutable reference into the causal model, the model cannot modify its context, which
+means updating the context must happen before evaluating a causal model using the context. For more details on the
+context design, see the the architecture documentation.
 
 ## About
 
-[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
+deterministic context-aware
 causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
