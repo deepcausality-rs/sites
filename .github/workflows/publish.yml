@@ -1,19 +1,19 @@
-# Publish
-
 name: Publish
+
+# Controls when the workflow will run
 on:
 
-# Triggers the workflow on push event, but only for main branch
-#  push:
-#    branches:
-#      - main
+  # Triggers the workflow on push event, but only for main branch
+  push:
+    branches:
+      - main
+ 
   # Triggers the workflow on pull request event, but only for pull request from not forked repo
-#  pull_request:
-#    types:
-#      - opened
-#      - synchronize
-#      -
-
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      
   # Triggers the workflow on pull request event, but only for pull request opened or pull request labeled with "🚀request-deploy" (from forked repo)
   # pull_request is not allowed to use secrets, so we use pull_request_target instead (in forked repos)
   pull_request_target:
@@ -22,6 +22,7 @@ on:
       - opened
       # When a labeled '🚀request-deploy' pull request from forked repo, it will be deploy to Cloudflare Pages
       - labeled
+  
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
