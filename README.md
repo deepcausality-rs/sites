@@ -3,22 +3,27 @@
 # Project website
 
 * Production: [www.deepcausality.com](https://deepcausality.com/)
-* Preview (beta): [https://beta-7j9.pages.dev](https://beta-7j9.pages.dev/)
 
 
 ## Contribute
 
 1) Clone this repository
 2) Modify the content as you see fit
-3) Create a pull request
+3) Create a pull request 
+4) Add the 🚀request-deploy label and wait for the CI to build the preview site (~1 minute)
+5) Double check the deploy preview URL if your change looks good
 
 ## Preview (beta) site
 
-Currently, the preview (beta) site is [build from a fork](https://github.com/marvin-hansen/sites) because of
-an open [issue that prevents CF page deployments from pull requests](https://github.com/cloudflare/pages-action/issues/94). 
-Ideally, a PR from should trigger rebuild of the preview site, but somehow that's currently not possible with the
-official cloudflare GitHub actions. Contributions to fix this are welcome. 
+Once you add the 🚀request-deploy label, the following happens:
 
+1) Your fork will be cloned
+2) NPM installs all dependencies
+3) NPM builds the entire project
+4) The site gets uploaded to cloudflare
+5) If things are okay, you see a success message with a preview URL
+
+<img src="https://github.com/deepcausality-rs/sites/blob/main/cf_success.png" width="60%" height="60%">
 
 ## Stack
 
