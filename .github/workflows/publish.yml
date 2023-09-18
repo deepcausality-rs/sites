@@ -57,7 +57,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node: [18]
+        # node: [18]
     # Cancel previous runs that are not completed yet
     concurrency:
       group: ${{ github.workflow }}-${{ github.event.pull_request.head.ref || github.ref }}
@@ -71,33 +71,15 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.ref }}
           fetch-depth: 0
 
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
         with:
-          node-version: ${{ matrix.node }}
+          hugo-version: '0.118.0'
+          extended: true
 
-      - name: Get cache directory
-        id: npm-cache-directory
-
-        shell: bash
-        run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-
-      - name: Cache
-        id: npm-cache
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.npm-cache-directory.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
+      - name: Build
         working-directory: web
-        run: npm ci
-
-      - name: Run generate
-        working-directory: web
-        run: npm run generate
+        run: hugo --minify
 
       - name: Publish to Cloudflare Pages
         id: cloudflare-pages-deploy
