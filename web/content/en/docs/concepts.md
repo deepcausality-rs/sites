@@ -280,7 +280,7 @@ Note that non-Euclidean representation and reasoning are all theoretical capabil
 However, because of the flexible architecture of DeepCausality, these and similar capabilities can be added at a later
 stage with reasonable effort and then enable novel applications of advanced hybrid reasoning.
 
-**Getting started:** [Background](/docs/getting-started/)
+**Next:** [Getting started](/docs/getting-started/)
 
 
 ## About
