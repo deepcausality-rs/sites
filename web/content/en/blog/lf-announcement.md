@@ -26,7 +26,8 @@ Read the full text of the press release: https://lfaidata.foundation/blog/
 
 ## About
 
-[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware causal reasoning in Rust. Learn more about DeepCausality
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
+deterministic context-aware causal reasoning in Rust. Learn more about DeepCausality
 on [GitHub](https://github.com/deepcausality-rs/deep_causality) and join
 the [DeepCausality-Announce Mailing List](https://lists.lfaidata.foundation/g/DeepCausality-announce).
 
@@ -35,8 +36,7 @@ community, and drive open source innovation in the AI and data domains by enabli
 opportunities for all the members of the community. For more information,
 please visit [lfaidata.foundation](https://lfaidata.foundation/).
 
-The [Linux Foundation.org](https://www.linuxfoundation.org/) is the world’s leading home for collaboration on open
-source software, hardware, standards, and
-data. Linux Foundation projects are critical to the world’s infrastructure including Linux, Kubernetes, Node.js, and
-more. For more information,
-please visit [linuxfoundation.org](https://www.linuxfoundation.org/). 
+The [Linux Foundation.org](https://www.linuxfoundation.org/) is the undisputed home for collaboration on open
+source software, hardware, standards, and data. Linux Foundation projects including Linux, Kubernetes, Node.js, and more
+are critical to the world’s infrastructure. For more information, please
+visit [linuxfoundation.org](https://www.linuxfoundation.org/). 
