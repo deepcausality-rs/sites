@@ -2,7 +2,7 @@
 
 name: Publish
 on:
-  # Triggers the workflow on push event, but only for main branch
+# Triggers the workflow on push event, but only for main branch
 #  push:
 #    branches:
 #      - main
