@@ -23,16 +23,16 @@ See the [documentation for more](/docs/intro/).
 
 The author of DeepCausality has a background in Fintech and spent considerable time modeling market volatility. Market
 volatility modeling can be done in one of two ways. Mathematical models are still considered the gold standard, and many
-institutions operate using them. Because markets work on time-series data, quantitative analysts (quants) use many
+institutions operate them in production. Because markets work on time-series data, quantitative analysts (quants) use many
 time-series statistical techniques (ARIMA) combined with various differential equations. While these models are complex
 and require substantial optimization and computational power, they are robust and reliable in operations.
 
 The second way emerged with the advent of artificial intelligence. The idea is relatively simple: train an AI model on
 market data and successful trades, then the AI supposedly trades successfully. In practice, this rarely works, although
-the reasons are rooted mainly in how contemporary AI works internally and remain largely unclear. There are several
+the reasons are rooted mainly in how contemporary AI works internally. There are several
 impediments that make conventional artificial intelligence unsuitable for financial markets.
 The [background section](/docs/background/) details how these three impediments affect modern machine learning. Solving
-one of them is challenging but possible. However, resolving all three would require rethinking the entire foundation of
+one of them is challenging but possible. However, resolving all of them would require rethinking the entire foundation of
 machine intelligence.
 
 A lesser-known alternative to conventional artificial intelligence is the field
