@@ -24,7 +24,7 @@ use deep_causality::prelude::*;
 
 ## Code
 
-[Full starter example](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/examples/starter/src/main.rs).
+[Full code of the starter example](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/examples/starter/src/main.rs).
 
 ### Build a causaloid
 
