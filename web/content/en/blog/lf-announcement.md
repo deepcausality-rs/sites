@@ -2,7 +2,7 @@
 title: DeepCausality Joins LF AI & Data as New Sandbox Project
 date: 2023-09-22
 author: Marvin Hansen
-draft: true
+draft: false
 ---
 
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
@@ -22,7 +22,7 @@ further diversifies our growing project portfolio and aligns with our mission to
 DeepCausality, with its focus on computational causality, stands to bring about transformative changes in dynamic
 systems across industries.”
 
-Read the full text of the press release: https://lfaidata.foundation/blog/
+Read the full text on the [LF AI & data blog post](https://lfaidata.foundation/blog/2023/09/19/deepcausality-joins-lf-ai-data-as-new-sandbox-project/).
 
 ## About
 
