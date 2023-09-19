@@ -1,6 +1,6 @@
 ---
 title: DeepCausality Joins LF AI & Data as New Sandbox Project
-date: 2023-09-22
+date: 2023-09-20
 author: Marvin Hansen
 draft: false
 ---
