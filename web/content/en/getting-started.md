@@ -6,8 +6,6 @@ description: "Getting Started with DeepCausality"
 
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
-It takes just steps to get started with DeepCausality:
-
 ## Install
 
 Add DeepCausality to your project using cargo:
@@ -33,7 +31,7 @@ The regular causaloid requires five generic parameters. See
 the [implementation](https://github.com/deepcausality-rs/deep_causality/blob/main/deep_causality/src/types/reasoning_types/causaloid/mod.rs)
 for details. The
 simpler [BaseCausaloid](https://github.com/deepcausality-rs/deep_causality/blob/main/deep_causality/src/types/alias_types/mod.rs)
-is pre-configured with default generic parameters so you don't have to deal with generics. This is helpful for simpler
+is pre-configured with default generic parameters, so you don't have to deal with generics. The BaseCausaloid is helpful for simpler
 applications or testing things out. The starter code example shown below uses the BaseCausaloid. The BaseCausaloid
 constructor takes three parameters:
 
@@ -41,16 +39,8 @@ constructor takes three parameters:
 2) causal_fn: CausalFn,
 3) description: &'l str
 
-ID and description are self explanatory, though its worth mentioning that many types in
-DeepCausality are defined as type aliases to give developers choice to redefine them easily. The causal function is a
-function type that returns a boolean value indicating whether the codified cause has been observed in the data given as
-an argument. There are two different kinds of
-causal functions, one with context and another one without context.
-The contextual causal function also takes an immutable reference to a context as argument.
-Therefore, the causal function can access data from a context to determine whether the
-codified cause has been observed. For an introduction to context in
-DeepCausality, [see this blog post.](https://deepcausality.com/blog/announcement-multiple-contexts/) In this starter
-example, no context is used and, instead, only the data given as an argument is analyzed.
+ID and description are self-explanatory, though it's worth mentioning that many types in DeepCausality are defined as type aliases to give developers the choice to redefine them. The causal function is a function type that returns a boolean value indicating whether the codified cause has been observed in the data given as an argument. There are two kinds of causal functions, one with context and another without context. The contextual causal function also takes an immutable reference to a context as an argument. Therefore, the causal function can access data from a context to determine whether the codified cause has been observedFor an introduction, [see the blog post about context in DeepCausality.](https://deepcausality.com/blog/announcement-multiple-contexts/) 
+This starter example does not uses context and instead only focueses on the main concepts of causal graph reasoning.
 
 ```rust
 use deep_causality::prelude::*;
@@ -75,18 +65,16 @@ fn get_test_causaloid<'l>(id: IdentificationValue) -> BaseCausaloid<'l> {
 }
 ```
 
-The causal function was adopted because it gives the most freedom to express a singular cause and therefore allows a
-straightforward implementation. Note, the wrapping function get_test_causaloid needs a lifetime because the Causaloid
-requires a lifetime to handle references. Please bel mindful to propagate all lifetimes accordingly. Also, the ID is
-given as an argument because the function is called multiple times to create multiple causaloids in the causal graph
-shown below.
+The causal function was adopted because it gives the most freedom to express a singular cause and allows a
+straightforward implementation. Note the wrapping function get_test_causaloid needs a lifetime because the Causaloid
+requires a lifetime to handle references. Please be mindful to propagate all lifetimes accordingly.
+
 
 ### Build a multi cause graph
 
-Similar to the causaloid, the CausalGraph also has a BaseCausalGraph already pre-configured with default generic
-parameters. The API is straightforward in what you would typically expect from workiing with a graph datta structure.
-You add some nodes, in this case instances of the causaloid previously defined, and you add edges between those nodes
-according to your requirements.
+Like the causaloid, the CausalGraph has a BaseCausalGraph already pre-configured with default generic
+parameters. The API is straightforward in what you would typically expect from working with a graph data structure.
+You add some nodes, in this case, instances of the causaloid previously defined, and you add edges between those nodes according to your requirements.
 
 ```rust
 use deep_causality::prelude::*;
@@ -136,27 +124,28 @@ fn get_multi_cause_graph<'l>() -> BaseCausalGraph<'l> {
 
 ### Reason over a causal graph
 
-When you create a new causal graph, it is inactive by default because nothing has been evaluated yet. There are a number
-of ways you can reason over the causal graph.
+A newly created causal graph is inactive by default because nothing has been evaluated yet. There are a number
+of ways, you can reason over the causal graph.
 
 1) Reason over a single node.
 2) Reason over a specific subgraph.
 3) Reason over the entire graph.
 
-When the graph does not have a context, it can only reason over the data provided as an argument to the reason function.
-This shown in the example below. Reasoning over the entire graph makes one critical assumption:
+A causal graph without context, as shown in the example, can only reason over the data provided as an argument. However, reasoning over the entire graph makes one critical assumption:
+
 
 > The causaloid ID and the data index match
 
-If, for any reason, the data index and the causaloid ID do not match, then custom index that matches
-these ID's needs to be provided as an optional argument. In the example below, None is provided because 
-the ID's in the example are suppose to match. Note, this approach isn't very scalable so if you need more advanced 
-mapping form data to causaloids, please consider using a context. When you use a context, you can chose to pass some data
-into the reasoning function or use dummy data and only use data from the context instead.
 
-Partial reasons can be done either by proving a start and a stop index, assuming there is just one 
-path between those nodes. If there are multiple paths of different lengths, then consider using the shortest path
-algorithm as shown below.
+If, for any reason, the data index and the causaloid ID do not match, then a custom index that matches
+these IDs needs to be provided as an optional argument. In the example below, None is provided because
+the IDs in the example are supposed to match. Note this approach isn't very scalable, so if you need more advanced
+mapping from data to causaloids, please consider using a context. When you use a context, you can pass some data
+into the reasoning function or use dummy data and only use the context instead.
+
+Partial reasons can be done either by proving a start and a stop index, assuming there is just one
+path between those nodes. If multiple pathways of different lengths exist in the graph, consider using the shortest path reasoning algorithm, as shown below.
+
 
 ```rust
 use deep_causality::prelude::*;
