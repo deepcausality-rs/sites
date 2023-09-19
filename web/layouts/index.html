@@ -15,13 +15,21 @@
     </div>
 
     <div class="hero-grid__col2">
-        <img
-          width="1200"
-          height="630"
-          src="{{ "img/frontpage-art.webp" | relURL }}"
-          alt="Fractal pattern"
-          loading="eager"
-        />
+
+<!--        https://stackoverflow.com/questions/68047264/lighthouse-pagespeed-issue-with-appropriately-sized-images -->
+        <picture>
+            <source srcset="img/front/front-1200.webp" media="(min-width: 992px)">
+            <source srcset="img/front/front-800.webp" media="(min-width: 768px)">
+            <source srcset="img/front/front-500.webp" media="(min-width: 0px)">
+            <img
+                    src="front-500.webp"
+                    height="300"
+                    width="500"
+                    class="img-responsive"
+                    loading="eager"
+                    alt="Frontpage image">
+        </picture>
+
       </div>
 
 </div>
