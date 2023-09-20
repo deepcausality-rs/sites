@@ -50,7 +50,7 @@ which serves as a foundation in the quest to formalize quantum gravity. Without 
 would not have been a conceivable way of making advanced computational causality operational for comprehensive industry
 applications.
 
-HHowever, it took a few more innovations to make DeepCausality a reality. Among them are context, hyper geometric causal
+However, it took a few more innovations to make DeepCausality a reality. Among them are context, hyper geometric causal
 structures, and contextual causal reasoning. For details, see
 the [introduction](https://deepcausality.com/docs/intro/), [architecture](/docs/architecture/),
 and [concept](https://deepcausality.com/docs/concepts/) sections of the documentation.
