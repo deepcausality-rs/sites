@@ -1,6 +1,6 @@
 ---
 title: JetBrains grants a free all-product license to DeepCausality
-date: 2023-09-202
+date: 2023-09-22
 author: Marvin Hansen
 draft: true
 ---
