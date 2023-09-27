@@ -68,6 +68,18 @@ en:
       weight: 5
       parent: "docs"
 
+    - identifier: "Limitations"
+      name: "Limitations"
+      url: "/docs/limitations/"
+      weight: 6
+      parent: "docs"
+
+    - identifier: "why"
+      name: "Why?"
+      url: "/docs/why/"
+      weight: 7
+      parent: "docs"
+
     - identifier: "community"
       name: "Community"
       url: "/community/"
