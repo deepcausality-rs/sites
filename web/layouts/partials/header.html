@@ -3,14 +3,14 @@
 
         {{ with .Site.Params.logo_on_white }}
         <a class="logo-link" href="{{ "/" | absLangURL }}">
-            <img class="logo" width="150" height="40" src="{{ . | absURL }}" alt="{{ $.Site.Title }}">
+        <img class="logo" width="180" height="40" src="{{ . | absURL }}" alt="{{ $.Site.Title }}">
         </a>
         {{ else }}
         <a class="site-title-link" href="{{ "/" | absLangURL }}">
-            <span class="site-title">{{ $.Site.Title }}</span>
+        <span class="site-title">{{ $.Site.Title }}</span>
         </a>
         {{ end }}
-        
+
         {{ with .Site.Menus.main }}
         <nav class="main-menu">
             <ul class="main-menu__wrapper">
