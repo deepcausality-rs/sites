@@ -2,6 +2,8 @@ en:
   languageName: English
   weight: 1
   params:
+    ### copyright (markdown can be used) ###
+    copyright: "Copyright &copy; {{< current_year >}} DeepCausality. All rights reserved. The DeepCausality Authors. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) by [CNCF](https://www.cncf.io)."
     title: "DeepCausality"
     description: "Computational causality for Rust"
 
@@ -20,8 +22,6 @@ en:
       text: "GitHub"
       link: "https://github.com/deepcausality-rs/deep_causality"
 
-    ### copyright (markdown can be used) ###
-    copyright: "Copyright &copy; {{< current_year >}} DeepCausality. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) by [CNCF](https://www.cncf.io)."
     github_edit: "Edit this page on GitHub"
 
   ### menu ###
