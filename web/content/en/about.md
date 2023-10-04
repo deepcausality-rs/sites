@@ -17,9 +17,7 @@ Examples where DeepCausality can be used include dynamic control systems in the 
 in the cloud industry, and dynamic market models in the financial industry. Start-ups aiming to disrupt existing
 industries may also explore DeepCausality to gain a competitive edge.
 
-See the [documentation for more](/docs/intro/).
-
-See the [blog for latest updates](/blog/).
+See the [documentation for more](/docs/intro/) and check the [blog for latest updates](/blog/).
 
 ## Linux Foundation
 
