@@ -58,7 +58,7 @@
         <div class="footer__logo-social-wrapper">
             {{ with .Site.Params.logo_on_black }}
             <a class="logo-link" href="{{ "/" | absLangURL }}">
-                <img loading="lazy" class="logo" width="180" height="40" src="{{ . | absURL }}" alt="{{ $.Site.Title }}"></a>
+                <img loading="lazy" class="logo" width="150" height="40" src="{{ . | absURL }}" alt="{{ $.Site.Title }}"></a>
             {{ end }}
 
             {{- partial "footer/social-links.html" . -}}
@@ -67,7 +67,7 @@
         <hr class="footer-hr">
 
         <div class="copyright">
-            <p>{{ .Site.Params.copyright | default "Copyright &copy; {{< current_year >}} All Rights Reserved. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) by [CNCF](https://www.cncf.io)." | markdownify }}</p>
+            <p>{{ .Site.Copyright | default "Copyright &copy; {{< current_year >}} All Rights Reserved. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) for Hugo by [CNCF](https://www.cncf.io)." | markdownify }}</p>
 
             <div class="copyright__accessibility-git-wrapper">
                 {{ if .Site.Params.accessibility.help_url }}
