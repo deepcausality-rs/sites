@@ -48,3 +48,4 @@ and [contact us immediately](/contact/).
 [1] Web beacons and tracker pixels are really hard to detect, but are problematic since
 they [can be used in phishing attacks](https://securityboulevard.com/2023/04/web-beacons-how-to-effectively-use-them-for-phishing-detection/).
 Please enable the "Do Not Track" option in your browser settings to stop tracking by default.
+
