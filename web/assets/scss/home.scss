@@ -36,6 +36,7 @@ $mobile-max: 999px;
         }
     }
     .hero-grid {
+        margin-top: 40px;
         h1 {
             @media (min-width: $min-desktop) and (max-width: $desktop-width) {
                 font-size: 75px;
@@ -69,12 +70,12 @@ $mobile-max: 999px;
             @media (min-width: $desktop-width) {
                 grid-column: 7 / -1;
             }
+            img {
+                border-radius: 20px;
+            }
         }
         .button {
             margin-bottom: 50px;
-            @media (min-width: $min-desktop) {
-                margin-bottom: 100px;
-            }
         }
 
         .shortened-width {

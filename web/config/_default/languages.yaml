@@ -1,10 +1,12 @@
 en:
   languageName: English
   weight: 1
-  params:
-    title: "DeepCausality"
-    description: "Computational causality for Rust"
+  ### copyright (markdown can be used) ###
+  copyright: "Copyright &copy; {{< current_year >}} DeepCausality. All rights reserved. The DeepCausality Authors. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) by [CNCF](https://www.cncf.io)."
+  title: "DeepCausality"
+  description: "DeepCausality is a computational causality library for Rust"
 
+  params:
     ### accessibility ###
     accessibility:
       skip_text: "Skip to content"
@@ -13,15 +15,13 @@ en:
 
     ### calls to action ###
     main_cta:
-      text: "GitHub"
-      link: "https://github.com/deepcausality-rs/deep_causality"
+      text: "Getting Started"
+      link: "/getting-started/"
 
     footer_cta:
       text: "GitHub"
       link: "https://github.com/deepcausality-rs/deep_causality"
 
-    ### copyright (markdown can be used) ###
-    copyright: "Copyright &copy; {{< current_year >}} DeepCausality. All Rights Reserved. [Dot Org Theme](https://github.com/cncf/dot-org-hugo-theme) for Hugo by [CNCF](https://www.cncf.io)."
     github_edit: "Edit this page on GitHub"
 
   ### menu ###
@@ -34,7 +34,7 @@ en:
       weight: 1
 
     - identifier: "docs"
-      name: "Docs"
+      name: "Documentation"
       url: "/docs/"
       weight: 2
 
@@ -62,22 +62,35 @@ en:
       weight: 4
       parent: "docs"
 
-    - identifier: "getting-started"
-      name: "Getting Started"
-      url: "/getting-started/"
-      weight: 3
-
     - identifier: "faq"
-      name: "FAQs"
+      name: "FAQ"
       url: "/faq/"
+      weight: 5
+      parent: "docs"
+
+    - identifier: "Limitations"
+      name: "Limitations"
+      url: "/docs/limitations/"
+      weight: 6
+      parent: "docs"
+
+    - identifier: "why"
+      name: "Why?"
+      url: "/docs/why/"
+      weight: 7
+      parent: "docs"
+
+    - identifier: "community"
+      name: "Community"
+      url: "/community/"
       weight: 4
 
     - identifier: "blog"
       name: "Blog"
       url: "/blog/"
-      weight: 5
+      weight: 6
 
     - identifier: "contact"
       name: "Contact"
       url: "/contact/"
-      weight: 5
+      weight: 7

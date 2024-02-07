@@ -2,30 +2,30 @@
 
 # Add custom assets relative to /static or via https
 logo_on_white: "/img/logo-b.svg"
-logo_on_black: "/img/logo-b.svg"
+logo_on_black: "/img/logo-w.svg"
 custom_js: []
 custom_css: []
 
 ######################## custom config ####################
 
 ### default social share image (can also be set per lang) ###
-images: ["/img/social-share.png"]
-
+images: ["/img/deep-causality-social-share.jpg"]
 
 github:
-  repo_url: "https://github.com/deepcausality-rs/sites/web"
-  show_edit_link: true
+  repo_url: "https://github.com/deepcausality-rs/sites/tree/main/web"
+  show_edit_link: false
 
 social_links:
   devstats: ""
   discord: ""
   facebook: ""
   flickr: ""
-  github: "https://github.com/deepcausality-rs/deep_causality"
+  github: ""
   instagram: ""
   landscape: ""
   linkedin: ""
   mastodon: ""
+  pinterest: ""
   rss: ""
   slack: ""
   stackoverflow: ""

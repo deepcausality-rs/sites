@@ -15,7 +15,6 @@ entities stored within a context-hyper-graphs. Fundamentally, this allows scalab
 dimensions.
 
 
-
 ## Data Context
 
 The most basic form of contextualization adds more data to a model. For example, when modeling GDP for any country,
