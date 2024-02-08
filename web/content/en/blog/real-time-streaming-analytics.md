@@ -11,7 +11,11 @@ draft: false
 
 {{< toc >}}
 
+
 ## Introduction
+
+**[Discuss this blog post on Maven](https://app.heymaven.com/discover/31935), the world's first serendipity network.**
+
 
 Much of my work gravitates around quantitative research of financial markets, for the most part working with
 custom-developed tools. When I started looking at risk management in the fast-moving crypto market, I wanted to try some
