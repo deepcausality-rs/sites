@@ -29,9 +29,12 @@ ground up for real-time event processing, thus is an obvious choice. DeepCausali
 causality library for Rust, capable of running tens of thousands of inferences per second on a laptop at microsecond
 latency.
 
-I limited this project's scope to building an end-to-end real-time causal analytics system mainly to showcase the whole
-picture without getting lost in any particular details. Therefore, you may not find Rust's geekiest details in this
-post, only those important aspects to understand the whole picture.
+I limited this project's scope to building an end-to-end real-time data streaming system with a causal inference example
+mainly to showcase the whole picture without getting lost in any particular details. I believe any seasoned engineer
+can figure out the details when needed. Also, this system is not meant for 24/7 operation although it already contains
+a few sanity checks, observability, and error propagation. It is meant purely for educational purpose and to showcase
+what can be done already today with Rust, Fluvio, and DeepCausality with a sneak peak into the future at the end of this
+post.
 
 ## Why?
 
@@ -52,8 +55,7 @@ However, building an event-based backtesting facility takes meaningful time and 
 source. There are several Python-based crypto libraries out there for live data streaming, placing orders on exchanges,
 or building trading bots, but nothing resembling an event-based backtesting facility. Despite its popularity in the
 blockchain and FinTech sphere, the Rust crate ecosystem offers surprisingly few solutions meaning I did not found an
-event
-based backtesting engine written in Rust during my initial research. While Rust may not give you a
+event based backtesting engine written in Rust during my initial research. While Rust may not give you a
 ready-to-use solution, it certainly provides handy building blocks for building a production-ready system.
 
 Therefore, it was time to roll up my sleeves and fill the gap. The catch is that the last time I worked on something
@@ -62,7 +64,7 @@ processing in Rust, let alone continuous async queries. Therefore, I started out
 exercise to settle some questions I had about the Rust ecosystem. I wanted to know if there is a production ready
 message system written in Rust that can be used for this project, and if so, how well does it perform? Next,
 I was eager to learn how good Async works in practice. And the, it was largely unknown how well SBE message encoding
-would work with Rust given that Rust support was added only recently. Finallym I wanted to see how good Rust and cargo
+would work with Rust given that Rust support was added only recently. Finally, I wanted to see how good Rust and cargo
 works in a mono-repo structure. A lot of questions had to be answered, and spoiler alert, I found answers to all of them
 and wrote the entire project in Rust.
 
@@ -86,26 +88,32 @@ level, Java application requires more hardware, which is simply more expensive. 
 RAM per partition, whereas Fluvio only requires ~50 MB of RAM per partition.
 
 When you use Rust and Fluvio, you accomplish real-time data streaming at a fraction of the operational cost. For
-example, one company migrated from Kafka to Fluvio and saw its annual cloud expenses drop by nearly half a million
-dollars annually.
+example, one company migrated from Kafka to Fluvio and saw its annual cloud expenses [drop by nearly half a million
+dollars annually.](https://infinyon.com/resources/cost-of-fluvio-vs-apache-kafka/)
 
 ### Why DeepCausality?
 
 For real-time analytics, one would conventionally write Scala programs for Apache Spark or Flink, but an equal step
-operational cost is implied. Some industry practitioners report that the expenses required to operate Spark exceed 50%
-of the project budget. In this case, the high cost isn't so much driven by the JVM but rather by costly support
+operational cost is implied. Some industry practitioners report that the [expenses required to operate Spark exceed 50%
+of the project budget.](https://www.peerspot.com/questions/what-is-your-experience-regarding-pricing-and-costs-for-apache-spark)
+In this case, the high cost isn't so much driven by the JVM but rather by costly support
 contracts and, even more so, by expensive GPU hardware. A state-of-the-art A100 GPU can cost you $3800 per month, and at
 scale you need a lot of them, so your cloud bill balloons. Supposing you are already heavily invested in the Spark /
-Flink ecosystem, you could look closely at alternate GPU providers such as Lambda Labs, Oblivious, or TensorDock to
-lower your GPU bill.
+Flink ecosystem, you could look closely at alternate GPU providers such
+as [Lambda Labs](https://lambdalabs.com/service/gpu-cloud#pricing), [Oblivious](https://oblivus.com/pricing/),
+or [TensorDock](https://www.tensordock.com/) to lower your GPU bill.
 
 On the other hand, if you’re not invested in the Kafka/Spark/Flink ecosystem, you can explore the innovative Rust
 ecosystem to look for alternatives. Contemporary Ai comes in two categories: One is DeepLearning that gets all the
 headlines with capabilities of driving LLMs like ChatGPT. The other one is Computational Causality, which is lesser
-known, but drives the success of streaming companies like Netflix. More specifically, Netflix has built its successful
-recommendation engine based on three themes: Time, Context, and Causality. While Netflix' secret sauce remains secret
-for the time being, computational causality has become available to the Rust ecosystem via the DeepCausality crate.
-DeepCauslity pioneers a new direction of computational causality and contributes three key novelties:
+known, but drives
+the[ success of streaming companies like Netflix](https://netflixtechblog.com/a-survey-of-causal-inference-applications-at-netflix-b62d25175e6f).
+More specifically, Netflix has built its successful
+recommendation engine based on three
+themes: [Time, Context, and Causality](https://www.slideshare.net/moustaki/time-context-and-causality-in-recommender-systems).
+While Netflix' secret causality engine remains secret for the time being, computational causality has become available
+to the Rust ecosystem via the DeepCausality crate. DeepCauslity pioneers a new direction of computational causality and
+contributes three key novelties:
 
 1) Context.
    You can add a context from which the causal model derives additional data. Since version 0.6, you can add multiple
@@ -123,38 +131,25 @@ DeepCauslity pioneers a new direction of computational causality and contributes
    parts, selected sub-graphs or the entire graph. As a result, you can break down otherwise complex models into smaller
    parts and freely assemble them together. As we will see later, the composability extends even further to crates,
 
-Causation can be represented in one of two ways:
+The [DeepCausality context guide ](https://deepcausality.com/docs/concepts/)elaborates on all three topics in more
+detail.
 
-1) Algebra: Simple structure but complex arithmetic
-2) Geometry: Simple arithmetic but complex structure
-
-The trade-off between structure and arithmetic is worth considering. Specifically, the algorithmization of causality
-unavoidably leads to formulating an algebra that defines the scope and shape of operations and transformations.
-Depending on
-the level of abstraction, the result becomes quite complex and then requires algebraic simplification. The bulk of all
-existing work in computational work has been done in the real of algebra, which ultimately paved the way for the
-algorithmization of causality.
-
-Alternatively, the geometrization of causality inverts the trade-off by only requiring a causal function that is
-certainly subject to more straightforward arithmetic than an entire causal algebra. In turn, it needs a
-geometric representation of causal relations with the implication of more structural complexity. DeepCausality pioneers
-the geometrization of causality, added geometric representation via recursive causal data structures,
-and charters increasingly new territory.
-
-With Rust, Fluvio, and
-DeepCausality selected, I was good to go. Next, let’s look at the project
+With Rust, Fluvio, and DeepCausality selected, I was good to go. Next, let’s look at the project
 structure.
 
 ## Project Structure
 
-The project follows a handful of best practices for mono-repos with the idea of scaling up the code base quickly. One
-critical practice is the declaration of internal dependencies in the workspace Cargo. config file, as discussed in this
-blog post. Another essential practice is to move shared modules into a separate crate. As a result, the project
+The project
+follows[ a handful of best practices for mono-repos](https://matklad.github.io/2021/08/22/large-rust-workspaces.html)
+with the idea of scaling up the code base quickly. One
+critical practice is the declaration of internal dependencies in the workspace Cargo. config file, [as discussed in this
+blog post](https://earthly.dev/blog/rust-monorepo/). Another essential practice is to move shared modules into a
+separate crate. As a result, the project
 comprises of a fairly large number of crates (> 20) relative to the small code size (~10K LoC). The underlying reason is
 that incremental compilation simply runs faster when modules are separated as crates. The most important crates of the
 project are:
 
-* flv_cli/data_importer – Util to import the Kraken data into the database.
+* flv_cli/data_importer – A tool to import the Kraken data into the database.
 * flv_clients
     * QD Client that connects to the data gateway.
     * SYMDB Client that connects to the symbol master DB.
@@ -162,15 +157,17 @@ project are:
 * flv_components – Contains several components that provide a coherent functionality.
 * flv_examples – Multiple code examples for streaming data.
 * flv_proto – Proto buffer specification for the symbol master database service.
-* flv_sbe – Single Binary Encoding specification, Rust bindings, and message types.
+* flv_sbe – Simple Binary Encoding (SBE) specification, Rust bindings, and message types.
 * flv_services – Contains the data gateway and the symbol master service.
 * flv_specs – Contains various specifications and configurations.
 
 In addition to these crates, there are a few more relevant folders:
 
-1) data – Empty. Put the Kraken data here to import and read the import guide.
+1) data – Empty. Put the Kraken data here to import. Feel free to read
+   the [data import guide for details](https://github.com/marvin-hansen/fluvio-examples/blob/main/doc/import_data.md).
 2) doc – Contains relevant project documentation written in Markdown.
-3) scripts – Bash scripts that are used by make. Read the install guide for details.
+3) scripts – Bash scripts that are used by make. Read
+   the [install guide for details](https://github.com/marvin-hansen/fluvio-examples/blob/main/doc/install.md).
 4) sql – SQL statements for exploring the data set.
 5) tools – Contains the SBE tool that generates the Rust bindings. Note, the Rust bindings are already in the repo, so
    you don’t need to use this tool. The SBE tool is only in the repo because it’s a patched version that irons out a few
@@ -210,9 +207,11 @@ The communication between the QD client and gateway follows a simple protocol.
 
 ## QD Gateway
 
-The Quantitative Data Gateway (QDGW) is a gateway service that gives clients access to financial market data from a
-database. The QDGW exposes a Fluvio topic for clients to connect to. Clients can send requests and receive responses
-over this topic, and it handles client login/logout and maintains a state of connected clients.
+The Quantitative Data Gateway (QDGW) is a
+gateway [implemented as a Tokio microservice](https://github.com/deepcausality-rs/fluvio-examples/tree/main/flv_services/qdgw/src)
+that streams financial market data from a database to connected clients. The QDGW exposes a Fluvio topic for clients to
+connect to. Clients can send requests and
+receive responses over this topic, and it handles client login/logout and maintains a state of connected clients.
 
 The gateway processes clients' requests for market data as trades or OHLCV bars by fetching the data from the database,
 serializing it into SBE messages, and streaming it to clients over their data channel. If there are issues processing a
@@ -221,12 +220,13 @@ symbol ID mappings, data types available, etc., to fulfill data requests correct
 
 ### Service Configuration
 
-The QDGW is implemented as a Tokio microservice that configures itself using the configuration manager based on the
+The QDGW configures itself using the configuration manager based on the
 service specification defined in the service_spec crate. As you add more services to a system, managing service
 configuration becomes increasingly more complex, and configuration mistakes tend to occur more frequently.
 
 In response, I have developed a simple auto-configuration system to ensure each service self-configures correctly using
-a configuration manager. A component reads the service specs from a crate and provides methods that give access to
+a [configuration manager](https://github.com/deepcausality-rs/fluvio-examples/blob/main/flv_components/config_manager/src/lib.rs).
+The component reads the service specs from a crate and provides methods that give access to
 various configurations. In larger systems, service specifications would probably be stored in a database, which the
 configuration manager would read. Because each service is uniquely identified by an Enum ServiceID, the configuration
 manager ensures each one gets only the configuration specified for that service. With this system, it is easy to
@@ -234,7 +234,9 @@ reconfigure the service by updating its specification in the service spec crate.
 
 ### Client handling
 
-The gateway handles client login messages by extracting the client ID and checking if the they are already logged in. If
+The
+gateway [handles client login messages](https://github.com/deepcausality-rs/fluvio-examples/blob/main/flv_services/qdgw/src/handle_client_login.rs)
+by extracting the client ID and checking if the they are already logged in. If
 so, it returns an error. Otherwise, it logs the client in. During the login process, the gateway creates a data producer
 for the client's data channel to which the data will be streamed. This allows the gateway service to securely stream
 data to channels that only the client can receive.
@@ -256,15 +258,18 @@ client could start.
 Instead, it is preferable to fetch data as an SQL stream and process each row as it becomes available and stream
 immediately to the client. In the background, the database probably uses pagination and batches of results until all
 rows have been returned. Regardless of the details, the QD gateway uses fetch mainly to prevent timeouts and excessive
-memory usage for larger datasets.
+memory usage for larger datasets. Specifically, memory usage is at least tenfold lower for using fetch on the database.
 
-However, the QueryManager used by the QD gateway implements both query and fetch, so depending on the use case, it can
+However,
+the [QueryManager](https://github.com/deepcausality-rs/fluvio-examples/tree/main/flv_components/db_query_manager/src)
+used by the QD gateway implements both query and fetch, so depending on the use case, it can
 do either. By observation, query allows for more sophisticated SQL queries but isn't great at loading large datasets,
 whereas fetch excels at bulk data streaming, but only if the query is relatively simple and fast to execute.
 
 ## QD Client
 
-The QD (Quantitative Data) client is used to connect to the QD Gateway (QDGW) service to request and consume market data
+The [QD (Quantitative Data) client](https://github.com/deepcausality-rs/fluvio-examples/blob/main/flv_clients/qd_client/src/lib/mod.rs)
+is used to connect to the QD Gateway (QDGW) service to request and consume market data
 streams. Upon initialization, the QD client uses the Fluvio admin API to create client-specific topics that only the
 client knows. One crucial detail is that in Fluvio, only the admin API can create or delete topics, whereas the regular
 API cannot. In a production environment, the admin API can be secured with authentication, but in this project, I've
@@ -310,6 +315,8 @@ async fn delete_topic(admin: &FluvioAdmin, topic_name: &str) -> Result<(), Box<d
 }
 ```
 
+The full implementation of create and delete topic is available in
+the [flv_utils file of the QD client](https://github.com/deepcausality-rs/fluvio-examples/blob/main/flv_clients/qd_client/src/lib/utils/flv_utils.rs).
 The QD client dynamically creates its topics upon initialization. Next, the QD client initializes a connection to the
 Fluvio cluster. It then sends a ClientLogin message to the QDGW to log in.
 
@@ -358,17 +365,19 @@ The Financial Information Exchange Standard (FIX) has glued the entire financial
 Interestingly, until version 4.4, the FIX format was all text-based despite the well-known deficiencies of text
 processing in low latency systems. Simple Binary Encoding (SBE) is a modern FIX standard for binary message encoding and
 is optimized for low latency and deterministic performance. The official standard and full FIX schema can be downloaded
-from the FIX community.
+from the [FIX community](https://www.fixtrading.org/standards/sbe/).
 
 It is well known that in message-based systems, throughput and latency depend on the message size, meaning a smaller
 message size usually results in lower latency and higher throughput. The average market on Kraken has well over a
-million recorded trades; therefore, message throughput matters. Performance benchmarks have shown that SBE delivers
-among the smallest message sizes and the fastest serialization/deserialization speed compared to other binary formats.
-The biggest difference, though, is between text-based JSON and SBE, in which SBE delivers a full order of magnitude more
-operations per microsecond.
+million recorded trades; therefore, message throughput matters. Performance benchmarks have shown that [SBE delivers
+among the smallest message sizes and the fastest serialization/deserialization](https://github.com/chronoxor/CppSerialization)
+speed compared to other binary formats. The biggest difference, though, is between text-based JSON and SBE, in which SBE
+delivers
+a [full order of magnitude more operations per microsecond](https://medium.com/@trunghuynh/json-protobuf-sbe-benchmark-the-byte-story-16840f763543).
 
-For this project, a much smaller and simpler custom SBE schema was designed specifically for small message sizes. See
-GitHub for the schema definition file. In the custom SBE schema, the largest data message counts 40 bytes, and most
+For this project, a much smaller and simpler custom SBE schema was designed specifically for small message sizes.[ See
+GitHub for the schema definition file](https://github.com/marvin-hansen/fluvio-examples/tree/main/flv_sbe/sbe_schema).
+In the custom SBE schema, the largest data message counts 40 bytes, and most
 control messages count less than 30 bytes in size, hence allowing for high throughput and low latency processing. Enums
 encoded as u8 integers were repeatedly used in the SBE schema to reduce message size. Furthermore, instead of using
 strings for ticker symbols, u16 integer IDs were used to reduce message size further. To map between ticker symbols and
@@ -387,14 +396,16 @@ generate the Rust bindings, and then define a proper Rust type with the added SB
 is necessary because SBE generates bindings for other programming languages, and XML was chosen as the lowest common
 denominator that works with every supported language and platform.
 
-## Symbol Master
+## Symbol Master (SYMDB)
 
 One challenge related to binary-encoded messages is how to map symbols to the corresponding numeric ID. During the data
 import, numeric IDs are assigned based on a first-come, first-served principle, so there is no particular order or
 system in place.
 
-For this project, a basic symbol master service has been implemented that maps the Kraken symbols to the corresponding
-numeric ID. This allows application developers to just pull a symbol list either from the database or directly from the
+For this project, a
+basic [symbol master service has been implemented](https://github.com/deepcausality-rs/fluvio-examples/tree/main/flv_services/symdb/src)
+that maps the Kraken symbols to the corresponding numeric ID. This allows application developers to just pull a symbol
+list either from the database or directly from the
 Kraken API, select a set of symbols, and then use the symbol master to translate these symbols to numeric IDs as
 required for the message encoding. When SBE binary encoded data arrives at the QD client, then the same symbol master
 service enables the reverse translation of the numeric ID back to the corresponding symbol. For the scope of this
@@ -429,11 +440,14 @@ assessment, you need a model. Remember, there are three ingredients to a success
 
 ### The Model
 
-For this project, a fictitious monthly breakout model has been invented to showcase how to design real-time analytics
-that rely on temporal context to express causal relations. Please understand that the model is entirely made up and was
-never empirically validated, meaning there is no way you should use this model on your trading account if you don’t want
-to go broke. Also, the purpose of this post isn't about financial modeling but rather about showcasing how to apply
-causal models to real-time data streams in Rust. With that out of the way, let’s look at the actual model:
+For this project, a fictitious monthly breakout model has been invented and implemented
+that [showcase how to design real-time analytics
+that rely on temporal context to express causal relations](https://github.com/deepcausality-rs/fluvio-examples/tree/main/flv_examples/causal_model/src).
+Please understand that the model is entirely made up and was never empirically validated, meaning there is no way you
+should use this model on your trading account if you don’t want to go broke. Also, the purpose of this post isn't about
+financial modeling but rather about showcasing how to apply causal models to real-time data streams in Rust.
+With that out of the way, let’s look
+at [the actual model](https://github.com/deepcausality-rs/fluvio-examples/blob/main/flv_examples/causal_model/src/model/model.rs):
 
 ```rust
 use crate::prelude::{context_utils, CustomCausaloid, CustomContext, TimeIndexExt};
@@ -574,12 +588,15 @@ let current_month_data = context_utils::extract_data_from_ctx(ctx, current_month
 let previous_month_data = context_utils::extract_data_from_ctx(ctx, previous_month_index)?;
 ```
 
-When you look at the API specification of the context type in the DeepCausality crate, it doesn't contain the methods
-that get the current or previous month's index. Instead, a type extension defines these custom methods. In this
-particular case, the TimeIndexExt is written as a type extension in a trait with a default implementation against the
-signature of a super trait implemented in the target type context. As a result, with a single import, you add new
-functionality to an external type. The formidable iterator_ext crate uses a similar technique to add more functionality
-to the standard iterator in Rust.
+When you look at
+the [DeepCausality context API specification](https://docs.rs/deep_causality/latest/deep_causality/types/context_types/context_graph/struct.Context.html),
+it doesn't contain the methods that get the current or previous month's index. Instead,[ a type extension defines these
+custom methods](http://xion.io/post/code/rust-extension-traits.html). In this particular case,
+the [TimeIndexExt is written as a type extension with a default implementation](https://github.com/deepcausality-rs/fluvio-examples/blob/main/flv_examples/causal_model/src/extensions/time_index.rs)
+against the signature of a super trait implemented in the target type context. As a result, with a single import, you
+add new functionality to an external type.
+The [formidable iterator_ext crate uses a similar technique](https://github.com/jerry73204/iterator-ext) to add more
+functionality to the standard iterator in Rust.
 
 With the TimeIndexExt extension in place, the model above works out of the box even though the DeepCausality crate only
 provides the building blocks. For convenience, the entire model, with its context builder, protocol, type extension, and
@@ -594,10 +611,10 @@ missing, feel free to open an issue or submit a pull request.
 
 The context is a central piece of the model. It is the place where all related data are stored for the model.
 
-In DeepCausality, a context can be static or dynamic, depending on the situation. The context structure is defined
-beforehand for a static context, whereas for a dynamic context, the structure is generated dynamically at runtime.
-Regardless of the specific structure, DeepCausality uses a hypergraph to internally represent arbitrary complex context
-structures.
+In [DeepCausality, a context](https://deepcausality.com/docs/concepts/#context) can be static or dynamic, depending on
+the situation. The context structure is defined beforehand for a static context, whereas for a dynamic context, the
+structure is generated dynamically at runtime. Regardless of the specific structure, DeepCausality uses a hypergraph to
+internally represent arbitrary complex context structures.
 
 The hypergraph representation of context in DeepCausality conceptualizes time as a non-linear category of unknown
 structure with the requirement that it is also linearly expressible to adhere to the common interpretation of time
@@ -742,45 +759,31 @@ still optimize the context with some clever lookup tables and probably get it fa
 
 Looking through the repo, you will unavoidably find things not mentioned in this post, simply because explaining the
 entire code base in a single blog post post is infeasible. However, I have good news for you because this project is
-exceptionally well-documented and has plenty of unit tests. Browsing the code with the documentation and tests
+exceptionally well-documented (just run `make doc`) and has plenty of unit tests. Browsing the code with the
+documentation and tests
 should help you understand whatever wasn’t mentioned in this post.
 
 I have deliberately skipped a general introduction to Rust because it's not the focus of this post. It is assumed when
-you read about real-time causal inference in Rust that you already have some experience in Rust.
+you read about real-time causal inference in Rust that you already have some experience writing software in Rust.
 At this point, the internet provides an abundance of material to learn Rust; just use your favorite search engine
 to find the best Rust resources for you.
 
 I've omitted a general introduction to computational causality, mainly to keep the post readable. The DeepCausality
-project has documentation to cover the basics and more. For a gentle introduction to the field, nothing beats "The Book
-of Why?" by Judea Pearl himself, the grandfather of computational causality.
+project has [documentation that covers the basics and more](https://deepcausality.com/docs/intro/). For a gentle
+introduction to the field,
+read ["The Book of Why?" by Judea Pearl](https://www.amazon.com/Book-Why-Science-Cause-Effect/dp/046509760X),
+the grandfather of computational causality.
 
 Lastly, I have left out a general introduction to quantitative finance and market modeling to keep the post to a
-reasonable length. There are several good books for any topic in quantitative finance. My three go-to recommendations
-are Financial Modeling by Simon Benninga, Advances in Financial Machine Learning by Marcos López, and The Successful
-Trader's Guide to Money Management by Andre Unger.
-
-## Next Steps
-
-Even though this project concluded, there would be a few steps more steps required to expand the QDGW into a
-fully-fledged quantitative data research system. First, the QD client needs some polishing so that it's easier to use.
-As you can see in the code examples, programming the QD client with async processing isn't as good as it could be.
-
-Next, adding some dashboards to visualize market data would greatly help to make the system easier to use. Luckily,
-there are multiple tutorials about adding Grafana dashboards to QuestDB to visualize crypto data.
-
-There are two ways to backtest risk assessment or trading strategies. One way is to track positions on the clients’
-side, which is usually more straightforward to implement. This is great for getting started, especially for
-single-instrument strategies. However, it isn't very realistic as it does not consider trading fees, slippage, and order
-splitting. None of these matter for smaller positions because small orders rarely get split, and slippage usually
-doesn’t amount to much compared to trading fees.
-The second way is to implement a virtual exchange that emulates the execution and fee schedule of a particular exchange.
-If the virtual exchange solely relies on trade data, it cannot consider slippage and order splitting so there is
-diminishing return. If it is implemented using order book replay, then it can emulate slippage and order splitting. Be
-aware that order book reconstruction requires some sophisticated engineering and full quote data.
-
-Lastly, a user interface for visualizing backtesting results would complete this project. UI in Rust remains one of the
-few areas where the ecosystem is still in its early days. There are a few great projects out there, such as Tauri, but I
-haven't used it myself therefore I can't comment on it.
+reasonable length. There
+are [several good books for any topic in quantitative finance](https://quant.stackexchange.com/questions/38862/what-are-the-quantitative-finance-books-that-we-should-all-have-in-our-shelves).
+My top three go-to recommendations
+are [Financial Modeling](https://www.amazon.com/Financial-Modeling-fifth-Simon-Benninga-ebook/dp/B094WZN89D/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr=)
+by Simon
+Benninga,[ Advances in Financial Machine Learning](https://www.amazon.com/Financial-Modeling-fifth-Simon-Benninga-ebook/dp/B094WZN89D/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr=)
+by Marcos López, and [The Successful
+Trader's Guide to Money Management](https://www.amazon.com/Successful-Traders-Guide-Money-Management/dp/1119798809/ref=sr_1_1?crid=2B71YRG4W1UZ9&keywords=unger+money+management&qid=1707200749&s=books&sprefix=unger+money+manageme%2Cstripbooks-intl-ship%2C361&sr=1-1)
+by Andre Unger.
 
 ## Future of Real-Time Data Processing in Fluvio
 
@@ -790,7 +793,8 @@ processing into a microservice. At least, that is a common conception unless you
 deployment. The Fluvio project already supports smart modules that allow you to perform common stream processing tasks
 such as collecting, transforming, deduplicating, or dispatching messages within the Fluvio cluster.
 However, the second generation of stateful services takes that concept one step further and allows for composable
-event-driven data pipelines using web assembly modules. The initiative is currently in private preview, and I had chance
+event-driven data pipelines using web assembly modules. Access
+to [stateful services is currently in private preview](https://infinyon.com/), and I had chance
 to test it out. The technology is outstanding, and with those web assembly modules, you can replace a bunch of
 microservices. While the stateful service may take some time to mature, I am confident it will be on a similar quality
 level to the existing system. I recommend Fluvio as a message bus to cut the cloud bill and see how the stateful service
@@ -812,9 +816,8 @@ writing intermediate effects to the context of another downstream causal model, 
 reason further and writes its inferences into another downstream context. By implication, modular models result in
 modular reasoning, and at each stage, intermediate results remain encapsulated yet accessible to other models or
 monitoring systems. This approach is potent given that any of those models may have multiple contexts to feed into the
-causal model at each stage.
-
-The future of DeepCausality is evolving towards increasingly more advanced and sophisticated real-time causal inference.
+causal model at each stage. The future of DeepCausality is evolving towards increasingly more advanced and sophisticated
+real-time causal inference.
 
 ## Reflection
 
@@ -840,25 +843,53 @@ The database QuestDB took me by surprise. The initial impression it gives is goo
 container, write a quick import tool that reads your CSV files, and insert them. The ILP insert speed is at or above one
 million rows per second. That’s all fine. The database in action, however, is a mixed bag. Query performance on the web
 console is as good as it gets, though I don't even get close to that using the pg-wire protocol via sqlx. There are
-plenty of reported async bugs, and I reported another one. Resampling by week is still absent so where do you go from
-there? I don’t have the answer, and I wish I had known all that beforehand.
+[plenty of reported async bugs](https://github.com/questdb/questdb/issues?q=is%3Aissue+async). I
+reported [yet another async bug](https://github.com/questdb/questdb/issues/4173), and [resampling by week is still
+absent](https://github.com/questdb/questdb/issues/3990), and then, there
+are [inexplicable data losses](https://github.com/questdb/questdb/issues/3986). Where do you go from there? I don’t have
+an answer, but I wish I would have known all that beforehand.
 
 Lastly, there is Cargo on a mono-repo. Historically, I've adopted Bazel early on whenever it was clear from day one that
 the code base would grow very fast and multiple 10x increases could be expected. There is a strong argument for Bazel,
 and probably plenty against too, but once your project is past the first 50k LoC, the choices of build systems that can
-cope with rapidly growing code are limited. By the time you hit 500K LoC, you end up with either Buck or Bazel.
-
+cope with rapidly growing code are limited.
 Alternatively, Cargo gives you much more breathing space before a hard decision has to be made. Specifically, building
 20 Crates with Cargo is a breeze, and works way better than expected. I estimate that you may be able to kick the can
 further down the road by another 10X, so only when you hit a 100K LoC or about 200 crates do you have to think hard
 about Bazel, mainly to get your release build time down. That's reassuring and refreshing compared to what I have
-experienced with other ecosystems.
+experienced with other ecosystems. By the time you
+hit [500K LoC, you end up with Bazel anyway](https://mmapped.blog/posts/17-scaling-rust-builds-with-bazel.html).
+
+## Next Steps
+
+Even though this project concluded, there would be a few steps more steps required to expand the QDGW into a
+fully-fledged quantitative data research system. First, the QD client needs some polishing so that it's easier to use.
+As you can see in the code examples, programming the QD client with async processing isn't as good as it could be.
+
+Next, adding some dashboards to visualize market data would greatly help to make the system easier to use. Luckily,
+there are [multiple tutorials about adding Grafana dashboards to QuestDB](https://questdb.io/blog/tags/GRAFANA/) to
+visualize crypto data.
+
+There are two ways to backtest risk assessment or trading strategies. One way is to track positions on the clients’
+side, which is usually more straightforward to implement. This is great for getting started, especially for
+single-instrument strategies. However, it isn't very realistic as it does not consider trading fees, slippage, and order
+splitting. None of these matter for smaller positions because small orders rarely get split, and slippage usually
+doesn’t amount to much compared to trading fees.
+The second way is to implement a virtual exchange that emulates the execution and fee schedule of a particular exchange.
+If the virtual exchange solely relies on trade data, it cannot consider slippage and order splitting so there is
+diminishing return. If it is implemented using order book replay, then it can emulate slippage and order splitting. Be
+aware that order book reconstruction requires some sophisticated engineering and full quote data.
+
+Lastly, a user interface for visualizing backtesting results would complete this project. UI in Rust remains one of the
+few areas where the ecosystem is still in its early days. There are a few great projects out there, such as Tauri, but I
+haven't used it myself therefore I can't comment on it.
 
 ## About
 
-Fluvio is an open-source data streaming platform with in-line computation capabilities. Apply your custom programs to
-aggregate, correlate, and transform data records in real time as they move over the network. Read more on the Fluvio
-website.
+[Fluvio](https://github.com/infinyon/fluvio) is an open-source data streaming platform with in-line computation
+capabilities. Apply your custom programs to
+aggregate, correlate, and transform data records in real time as they move over the network. Read more on the [Fluvio
+website](https://www.fluvio.io/).
 
 [DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
 deterministic context-aware causal reasoning in Rust. Learn more about DeepCausality
@@ -870,6 +901,8 @@ community, and drive open source innovation in the AI and data domains by enabli
 opportunities for all the members of the community. For more information,
 please visit [lfaidata.foundation](https://lfaidata.foundation/).
 
-The author, Marvin Hansen, is the director of Emet-Labs, a FinTech research company specializing in applying computational causality
+The author, Marvin Hansen, is the director of [Emet-Labs](https://emet-labs.com/), a FinTech research company
+specializing in applying
+computational causality
 to financial markets. He is the author and maintainer of the DeepCausality
 project. [Connect on Maven](https://app.heymaven.com/profile/385), the worlds first serendipity network. 
