@@ -796,6 +796,24 @@ evolves to see if your requirements can be met by the new paradigm. Like causal 
 Still, when it works, you will discover something truly intriguing that gives you capabilities previously thought
 unattainable. And you get it at an absurdly low operational cost.
 
+## Future of DeepCausality
+
+Even though this project only scratched the surface of what DeepCausality can do, a few more features are planned. For
+once, a ticket is open to remove lifelines from the public API. When completed, the DeepCausality crate will work
+significantly better with concurrency code. Right now, these lifelines conflict with Tokio's requirement that each task
+must own all its data to ensure thread safety. As a result, you cannot easily share a context between tasks via the
+usual Arc/Mutex wrapper, and therefore, async & concurrent context updates are currently too cumbersome. The lifeline
+removal is only a refactoring task and should be done sooner rather than later.
+
+Modeling modular contextual causal propagation is an area that needs further exploration. Specifically, this means
+writing intermediate effects to the context of another downstream causal model, which then uses the updated context to
+reason further and writes its inferences into another downstream context. By implication, modular models result in
+modular reasoning, and at each stage, intermediate results remain encapsulated yet accessible to other models or
+monitoring systems. This approach is potent given that any of those models may have multiple contexts to feed into the
+causal model at each stage.
+
+The future of DeepCausality is evolving towards increasingly more advanced and sophisticated real-time causal inference.
+
 ## Reflection
 
 When I started with the project, several unknowns had to be answered. For once, it wasn't clear if there was a
