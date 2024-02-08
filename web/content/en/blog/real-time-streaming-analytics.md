@@ -33,7 +33,9 @@ I limited this project's scope to building an end-to-end real-time causal analyt
 picture without getting lost in any particular details. Therefore, you may not find Rust's geekiest details in this
 post, only those important aspects to understand the whole picture.
 
-## Why this project?
+## Why?
+
+### Why this project?
 
 Market data streaming systems come with some distinct requirements:
 
@@ -64,7 +66,7 @@ would work with Rust given that Rust support was added only recently. Finallym I
 works in a mono-repo structure. A lot of questions had to be answered, and spoiler alert, I found answers to all of them
 and wrote the entire project in Rust.
 
-## Why Fluvio?
+### Why Fluvio?
 
 Embracing the unfamiliar, I adopted Tokio as an async runtime, but then hit the next roadblock; I needed a fast and
 reliable message bus that wasn’t Kafka. You see, I have zero objection to deploying Kafka in a multi-million-dollar
@@ -87,7 +89,7 @@ When you use Rust and Fluvio, you accomplish real-time data streaming at a fract
 example, one company migrated from Kafka to Fluvio and saw its annual cloud expenses drop by nearly half a million
 dollars annually.
 
-## Why DeepCausality?
+### Why DeepCausality?
 
 For real-time analytics, one would conventionally write Scala programs for Apache Spark or Flink, but an equal step
 operational cost is implied. Some industry practitioners report that the expenses required to operate Spark exceed 50%
@@ -868,9 +870,6 @@ community, and drive open source innovation in the AI and data domains by enabli
 opportunities for all the members of the community. For more information,
 please visit [lfaidata.foundation](https://lfaidata.foundation/).
 
-## Author
-
-Marvin Hansen is the director of Emet-Labs, a FinTech research company specializing in applying computational causality
+The author, Marvin Hansen, is the director of Emet-Labs, a FinTech research company specializing in applying computational causality
 to financial markets. He is the author and maintainer of the DeepCausality
-project. [Connect with Marvin on Maven](https://app.heymaven.com/profile/385), the worlds
-first serendipity network. 
+project. [Connect on Maven](https://app.heymaven.com/profile/385), the worlds first serendipity network. 
