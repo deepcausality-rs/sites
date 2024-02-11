@@ -839,19 +839,9 @@ ecosystem by a mile. It might not be the fastest implementation regarding total 
 your proto file, you have a functional gRPC server within 30 minutes, depending on how fast you can type. It's really
 impressive and an excellent example of how much better the development experience can be in Rust.
 
-In addition, it wasn’t known how well SBE would work in Tandem with Rust. Again, it was of no concern and they
+In addition, it wasn’t known how well SBE would work in tandem with Rust. Again, it was of no concern and they
 coordinated seamlessly. I just got things done. Fixed-sized binary formats are always a bit more verbose to work with,
 but the net gain in message throughput and latency you get due to smaller message sizes is well worth the effort.
-
-The database QuestDB took me by surprise. The initial impression it gives is good; you install locally or start a docker
-container, write a quick import tool that reads your CSV files, and insert them. The ILP insert speed is at or above one
-million rows per second. That’s all fine. The database in action, however, is a mixed bag. Query performance on the web
-console is as good as it gets, though I don't even get close to that using the pg-wire protocol via sqlx. There are
-[plenty of reported async bugs](https://github.com/questdb/questdb/issues?q=is%3Aissue+async). I
-reported [yet another async bug](https://github.com/questdb/questdb/issues/4173), and [resampling by week is still
-absent](https://github.com/questdb/questdb/issues/3990), and then, there
-are [inexplicable data losses](https://github.com/questdb/questdb/issues/3986). Where do you go from there? I don’t have
-an answer, but I wish I would have known all that beforehand.
 
 Lastly, there is Cargo on a mono-repo. Historically, I've adopted Bazel early on whenever it was clear from day one that
 the code base would grow very fast and multiple 10x increases could be expected. There is a strong argument for Bazel,
@@ -870,10 +860,7 @@ Even though this project concluded, there would be a few steps more steps requir
 fully-fledged quantitative data research system. First, the QD client needs some polishing so that it's easier to use.
 As you can see in the code examples, programming the QD client with async processing isn't as good as it could be.
 
-Next, adding some dashboards to visualize market data would greatly help to make the system easier to use. Luckily,
-there are [multiple tutorials about adding Grafana dashboards to QuestDB](https://questdb.io/blog/tags/GRAFANA/) to
-visualize crypto data.
-
+Them adding more advanced features like the ability to backtest risk assessment or trading strategies would be another next step.
 There are two ways to backtest risk assessment or trading strategies. One way is to track positions on the clients’
 side, which is usually more straightforward to implement. This is great for getting started, especially for
 single-instrument strategies. However, it isn't very realistic as it does not consider trading fees, slippage, and order
