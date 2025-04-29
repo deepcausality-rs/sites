@@ -105,3 +105,9 @@ Imagine AI capable of tracing a causal chain from a measurable climate variable 
 This fusion creates systems possessing a form of Grounded Intelligent Agency – one whose grounding is in the inferred causal mechanisms of the world. LLMs provide the perceptual grasp of human discourse, data, human emotions, desires and beliefs; causal inference delivers the analytical understanding of how systems respond; causal state machines can test and implement actions based on this understanding. The combined power allows these systems to interact purposefully across diverse domains.
 
 However, herein lies a profoundly unsettling potential: A grounded intelligent agency understanding deep causal structures, coupled with an LLM's grasp of human belief, gains an unprecedented capacity not just to understand, but to act and shape the fabric of society.
+
+## About
+
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
+deterministic context-aware causal reasoning in Rust. Learn more about DeepCausality
+on [GitHub](https://github.com/deepcausality-rs/deep_causality) and join the [DeepCausality-Announce Mailing List](https://lists.lfaidata.foundation/g/DeepCausality-announce).
