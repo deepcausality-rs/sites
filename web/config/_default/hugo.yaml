@@ -8,6 +8,9 @@ title: "DeepCausality"
 # Default timezone
 timeZone: "Asia/Singapore"
 
+# Disables some warnings
+ignoreLogs: ['warning-goldmark-raw-html']
+
 ######################## i18n ####################
 # Auto-detect Chinese/Japanese/Korean Languages in the content. see: https://gohugo.io/getting-started/configuration/#hascjklanguage
 hasCJKLanguage: false
