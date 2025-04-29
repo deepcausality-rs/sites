@@ -257,28 +257,20 @@ memory (> 10GB) because of the underlying sparse matrix representation.
 
 ## Non-Euclidian data representation
 
-DeepCausality has carefully chosen abstractions that preserve a high degree of flexibility.
-For example, the context abstracts over all four dimensions, and the causaloid abstracts over causal relations via its
-causal function. However, certain constraints remain in place; for example, the causal function still depends on data in
-a numerical format, which structurally binds data to be of Euclidean representation. Likewise, structures embedded into
-the context require its generic type to provide at least addition, subtraction, and multiplication, which technically
-constrains these structures to numerical categories. However, for many use cases in machine learning, this is
-appropriate and, thefore, made the default representation.
+DeepCausality has carefully chosen abstractions that preserve a high degree of flexibility. For example, the context abstracts over all four dimensions, and the causaloid abstracts over causal relations via its causal function. 
 
-However, for scenarios that require non-Euclidean data representation, for example, neuro-symbolic reasoning, a custom
-context node, say symbol, can be added and embedded into a contextoid. That way, a neuro-symbolic context can be
-constructed using the same hypergraph capabilities to express neuro-symbolic structures within space, time, and
-spacetime.
+The explicit conceptualization of Space and Spacetime within DeepCausality, while powerful, naturally invites a deeper consideration: must these representations adhere to the familiar rules of Euclidean geometry? The framework's architecture, particularly its reliance on generic traits like `Spatial<V>`, offers a resounding answer: absolutely not. This inherent flexibility is not an afterthought but a core design principle enabling the modeling of causality in domains where relationships are defined by connections, correlations, or abstract similarities rather than physical proximity in flat, metric space.
 
-The causaloid would require one modification to use only a causal function with a context but without a data argument.
-Also, the adjustable protocol will require some changes since the current implementation requires certain type
-constraints that conflict with non-Euclidean data representation. However, these constraints can be pushed downstream
-with only minimal effort. With all that in place, a custom protocol would enable neuro-symbolic reasoning, possibly
-within a mixed model containing Euclidean and non-Euclidean structures and reasoning.
+The constraint on the `Spatial<V>` trait requires implementing methods relevant to spatial relationships, but it does not mandate *how* those relationships are defined or calculated. While the default `Space` structure provides convenience for up to three coordinates of type `T`, this is merely one possible implementation of the `Spatial<V>` protocol. The true power emerges when custom types are created to implement this protocol, embodying non-Euclidean or entirely abstract notions of "space."
 
-Note that non-Euclidean representation and reasoning are all theoretical capabilities that have not been implemented.
-However, because of the flexible architecture of DeepCausality, these and similar capabilities can be added at a later
-stage with reasonable effort and then enable novel applications of advanced hybrid reasoning.
+A custom type, perhaps `CorrelationContext`, could implement `Spatial<f64>` where methods might calculate distances based on `1 - correlation` or determine neighbors based on exceeding a correlation threshold. Another custom type, `SectorGraphContext`, implementing `Spatial<NodeId>`, could define relationships based on graph connectivity within an industry classification graph. The core DeepCausality reasoning engine, operating via the `CausaloidGraph`, remains agnostic. It requests spatial information or relationships through the `Spatial<V>` trait methods; the specific implementation provided – whether Euclidean, correlation-based, or graph-based – determines the nature of the "space" through which causal effects propagate.
+
+This abstraction extends naturally to other complex domains. In social network analysis, "space" is the network graph itself; causal influence propagates along social ties, not physical distance. A `SocialNetworkContext` implementing `Spatial<UserId>` would define adjacencies based on network links. In bioinformatics, proteins might exist in a "space" defined by structural similarity or functional pathways; a custom context could implement the `Spatial` protocol based on relevant biological metrics.
+
+The significance of this design lies in its ability to model causality directly within the relevant relational structure of the domain. It avoids the need to artificially force complex, abstract relationships into an ill-fitting Euclidean coordinate system. Instead, the domain's natural structure – be it a network, a feature space manifold, or a categorical hierarchy – can be represented through a custom type implementing the spatial protocol. This allows the causal functions within `Causaloid`s and the reasoning across the `CausaloidGraph` (which relies on node connectivity and delegated verification) to operate on concepts like "influence," "similarity," or "membership" directly, leading to more faithful and insightful causal models.
+
+Furthermore, the uniformity provided by the trait system means these diverse spatial conceptions can coexist and interact within a single, comprehensive causal model, mirroring the multifaceted nature of real-world systems where physical location, network position, and abstract similarity might all simultaneously play causal roles. This capacity to move fluidly between different conceptualizations of space and relationship, grounded in a rigorous causal framework, unlocks a profound potential for understanding systems whose complexity transcends simple geometric intuition.
+
 
 **Next:** [Getting started](/docs/getting-started/)
 
