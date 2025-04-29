@@ -8,9 +8,9 @@ draft: false
 
 The Deep Causality project was introduced in September 2023. In the time since, Large Language Models (LLMs) have made significant leaps forward, and sophisticated reasoning models have emerged. This progress prompts a critical question: Why invest in computational causality when advanced reasoning models become increasingly more capable?
 
-Fundamentally, in those cases when conventional LLM fail the failures stem from one of two primary sources. First, a task might require data that fell outside the model's training dataset. While increasingly large and diverse datasets have made this less common, it remains a factor.
+Fundamentally, in those cases when a conventional LLM fails, the failure stem from one of two primary sources. First, a task might require data that fell outside the model's training dataset. While increasingly large and diverse datasets have made this less common, it remains a factor.
 
-Second, a task might require generalization beyond the patterns present in the training data distribution. Inputs that fall significantly outside this distribution often lead to the phenomenon known as "hallucinations"—confidently generated but incorrect or nonsensical outputs. While other factors exist, these two represent primary failure modes for current AI.
+Second, a task might require generalization beyond the patterns present in the training data distribution. Inputs that fall significantly outside this distribution often lead to the phenomenon known as "hallucinations"—confidently generated but incorrect or nonsensical outputs. While other factors exist, these two represent primary failure modes for current AI. These failure modes result directly from the [theoretically foundation of deep learning](https://deepcausality.com/docs/background/#the-universal-approximation-theorem) and can be mitigated to some extent. 
 
 The technology industry has tackled the first challenge through massive scaling. Gargantuan amounts of data, encompassing a vast portion of the text published online over decades, have been incorporated into training. Datasets became more diverse, representing a broader range of perspectives and, crucially, text in numerous languages, including extensive libraries of scanned books. This approach has proven effective, as LLM performance scales with data quantity and quality.
 
