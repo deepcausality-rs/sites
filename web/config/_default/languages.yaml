@@ -80,22 +80,35 @@ en:
       weight: 7
       parent: "docs"
 
+    - identifier: "resources"
+      name: "Resources"
+      url: "/resources/"
+      weight: 3
+
+    - identifier: "articles"
+      name: "Articles"
+      url: "/papers/"
+      weight: 4
+      parent: "resources"
+
+    - identifier: "blog"
+      name: "Blog"
+      url: "/blog/"
+      weight: 5
+      parent: "resources"
+
+    - identifier: "faq"
+      name: "FAQ"
+      url: "/faq/"
+      weight: 6
+      parent: "resources"
+
     - identifier: "community"
       name: "Community"
       url: "/community/"
       weight: 4
 
-    - identifier: "faq"
-      name: "FAQ"
-      url: "/faq/"
-      weight: 5
-
-    - identifier: "blog"
-      name: "Blog"
-      url: "/blog/"
-      weight: 6
-
     - identifier: "contact"
       name: "Contact"
       url: "/contact/"
-      weight: 7
+      weight: 5
