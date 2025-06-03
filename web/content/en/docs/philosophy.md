@@ -43,7 +43,8 @@ One might challenge the presumption of non-linear time progression, but in compl
 
 Non-linear time regions can occur when the background time is represented as a temporal hyper-graph that holds multiple time resolutions simultaneously. The simultaneous presence of time units at different scales breaks the simple time-linear assumption (all time has the same unit, and moves therefore at the same rate) that computational causality tools commonly make.
 
-Furthermore, in a temporal hyper-graph, the unit of time is scale dependent which means in order to compare temporal values one must consider the scale to make a valid comparison between equally scaled values, i.e., hour X compared to hour Y.
+Furthermore, in a temporal hyper-graph, the unit of time is scale dependent which means to compare temporal values 
+one must consider the scale to make a valid comparison between equally scaled values i.e. hour X compared to hour Y.
 
 Less obvious, a temporal hyper-graph, by design, holds all past and present temporal values simultaneously within its structure. This co-existence of multiple temporal points simplifies non-trivial temporal arithmetic over hetero-scaled time units, yet it imposes a vexing problem: How do you know if a time value in a node of the graph is current or past?
 
