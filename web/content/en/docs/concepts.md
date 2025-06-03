@@ -272,11 +272,10 @@ The significance of this design lies in its ability to model causality directly 
 Furthermore, the uniformity provided by the trait system means these diverse spatial conceptions can coexist and interact within a single, comprehensive causal model, mirroring the multifaceted nature of real-world systems where physical location, network position, and abstract similarity might all simultaneously play causal roles. This capacity to move fluidly between different conceptualizations of space and relationship, grounded in a rigorous causal framework, unlocks a profound potential for understanding systems whose complexity transcends simple geometric intuition.
 
 
-**Next:** [Getting started](/docs/getting-started/)
+**Next:** [context](/docs/context/)
 
 
 ## About
 
 [DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
-deterministic context-aware
-causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
+deterministic context-aware causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)

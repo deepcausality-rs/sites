@@ -2,12 +2,13 @@
 author: Marvin Hansen
 title: "Context"
 description: "Context in DeepCausality"
-draft: true
+date: 2023-09-05
+draft: false
 ---
+
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
 {{< toc >}}
-
 
 
 DeepCausality enables context aware causality reason across data-like, time-like, space-like, and spacetime-like
@@ -82,7 +83,12 @@ are known upfront, providing a significant performance boost over tensors. Perfo
 hyper-graphs may grow large with millions of nodes, and obviously, one wants the fastest possible global adjustment in
 those cases.
 
+
+**Next:** [Getting started](/getting-started/)
+
+
 ## About
 
-[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and deterministic context-aware
+[DeepCausality](https://deepcausality.com/) is a hyper-geometric computational causality library that enables fast and
+deterministic context-aware
 causal reasoning in Rust. Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
