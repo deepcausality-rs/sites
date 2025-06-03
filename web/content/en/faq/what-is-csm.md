@@ -1,6 +1,6 @@
 ---
 author: Marvin Hansen
-title: What is Causal State Machine?
+title: What is a Causal State Machine?
 weight: 3
 ---
 

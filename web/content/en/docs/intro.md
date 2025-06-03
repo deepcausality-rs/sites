@@ -246,6 +246,27 @@ advanced science, or avionics may explore deep causality for its ability to expr
 context as part of advanced simulations. DeepCausality is only one part of the larger quest of building intelligent
 systems and aims to explore novel concepts along the way.
 
+
+## Limitations
+
+DeepCausality still has some more work to do. In its current state, a handful of limitations exist:
+
+* Counterfactual reasoning is missing. DeepCausality cannot reason counter to the fact.
+
+* Causal structural learning is missing. Right now, causal models have to be designed and built by hand. Possible areas
+  of exploration for causal structural learning are:
+  - Causal Reinforcement Learning ([Elias Bareinboim](https://crl.causalai.net/))
+  - Deep Neuro Evolution ([Kenneth O. Stanley](https://www.uber.com/en-ID/blog/deep-neuroevolution/))
+
+* Tooling is absent. Specifically, tools such as model server,
+  dashboard, and model visualization are missing.
+
+
+None of these limitations is definitive, meaning with some creative work, counterfactual reasoning might become
+solvable, and, likewise, causal structural learning might become feasible when adapting, for example, deep
+neuroevolution to the hyper-graph structure central to DeepCausality. Tooling may require a deeper work commitment since
+good tooling usually requires solid design and implementation.
+
 **Next:** [Architecture](/docs/architecture/)
 
 

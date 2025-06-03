@@ -34,7 +34,7 @@ en:
       weight: 1
 
     - identifier: "docs"
-      name: "Documentation"
+      name: "Docs"
       url: "/docs/"
       weight: 2
 
@@ -62,15 +62,15 @@ en:
       weight: 4
       parent: "docs"
 
-    - identifier: "faq"
-      name: "FAQ"
-      url: "/faq/"
+    - identifier: "context"
+      name: "Context"
+      url: "/docs/context/"
       weight: 5
       parent: "docs"
 
-    - identifier: "Limitations"
-      name: "Limitations"
-      url: "/docs/limitations/"
+    - identifier: "philosophy"
+      name: "Philosophy"
+      url: "/docs/philosophy/"
       weight: 6
       parent: "docs"
 
@@ -84,6 +84,11 @@ en:
       name: "Community"
       url: "/community/"
       weight: 4
+
+    - identifier: "faq"
+      name: "FAQ"
+      url: "/faq/"
+      weight: 5
 
     - identifier: "blog"
       name: "Blog"
