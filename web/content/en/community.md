@@ -5,6 +5,10 @@ description: "Join the DeepCausality community"
 ---
 [//]: # (SPDX-License-Identifier: CC-BY-4.0)
 
+## Discord 
+
+* [DeepCausality Discord Server](https://discord.gg/sTue79Sx)
+
 ## GitHub Discussions
 
 * Announcements
