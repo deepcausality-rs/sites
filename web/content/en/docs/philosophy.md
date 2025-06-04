@@ -9,7 +9,7 @@ draft: false
 
 {{< toc >}}
 
-## Overview
+## Overview: The Effect Propagation Process
 
 The study of causality dates back to Aristotle and was later formalized in its commonly known form by Seneca. Seneca’s assumption of a background space and time was later challenged by relationalists like Leibniz and critiqued scientifically by Russell.
 
