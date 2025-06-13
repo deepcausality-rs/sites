@@ -16,7 +16,7 @@ Articles written by the DeepCausality team are listed in chronological order.
 
 * **[The Epistemology of the Effect Propagation Process, June 2025](https://github.com/deepcausality-rs/papers/blob/main/epistemology_effect_propagation_process/Epistemology_Effect_Propagation_Process.pdf)**
 
-For all papers, sources and citation, [please see the paper repository](https://github.com/marvin-hansen/papers). 
+For all articles, sources, and citation, [please see the paper repository](https://github.com/deepcausality-rs/papers). 
 
 ## About
 
