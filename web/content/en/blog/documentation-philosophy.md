@@ -9,7 +9,7 @@ author: Marvin Hansen
 
 ![DeepCausality logo](/img/logo-color.png)
 
-The DeepCausality project has published the ["Effect Propagation Process" (EPP)](/docs/philosophy/), a philosophical framework for Post-Quantum Causality that informs its Rust implementation. The EPP offers a unified philosophical framework of causality that remains compatible with classical causality and conceptually congruent with physics theories of quantum gravity. Read more in the [documentation](/docs/philosophy/).
+The DeepCausality project has published the ["Effect Propagation Process" (EPP)](/docs/philosophy/), a philosophical framework that informs its Rust implementation. The EPP offers a unified philosophical framework of causality that remains compatible with classical causality and conceptually congruent with physics theories of quantum gravity. Read more in the [documentation](/docs/philosophy/).
 
 Furthermore, a new [articles section](https://deepcausality.com/papers/) was added to the project website 
 to provide easy access to PDF versions of all articles written by the DeepCausality project. 
