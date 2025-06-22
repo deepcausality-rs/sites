@@ -7,7 +7,7 @@ description: "Join the DeepCausality community"
 
 ## Discord 
 
-* [DeepCausality Discord Server](https://discord.gg/sTue79Sx)
+* [DeepCausality Discord Server](https://discord.gg/Bxj9P7JXSj)
 
 ## GitHub Discussions
 
