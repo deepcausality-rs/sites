@@ -46,7 +46,7 @@ Previously, DeepCausality supported flat-space representations such as Euclidean
 - Discrete time - represents discrete, uniformly spaced ticks
 - Euclidean time semantically represents the rotated, imaginary-time axis as a real-valued scalar.
 - Lorentzian time corresponds to the real-valued coordinate time used in special and general relativity
-- Symbolic time` models time points that are defined in terms of symbolic relationships.
+- Symbolic time models time points that are defined in terms of symbolic relationships.
 
 **What Can You Do With The New Context Types?**
 
@@ -93,8 +93,8 @@ DeepCausality 0.8 offers uniform and explainable causal reasoning across Euclide
 Get Started with DeepCausality 0.8 Today!
 
 * Check out the Release Notes for full details.
-* Explore the[ code examples on GitHub](https://github.com/deepcausality-rs/deep_causality/tree/main/examples).
-* Join the [community](https://deepcausality.com/community/).
+* Explore the [code examples on GitHub](https://github.com/deepcausality-rs/deep_causality/tree/main/examples).
+* **Join the [community]**(https://deepcausality.com/community/).
 
 
 ## About
