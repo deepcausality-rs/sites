@@ -41,11 +41,11 @@ to be modified, you call `.unfreeze()` and your graph structure can evolve furth
 By freezing a graph into a stable `CsmGraph`, we eliminate CPU cache misses inherent to traditional flexible graph
 structures, thus allowing the CPU to operate with maximum efficiency. The results are transformational: On the DeepCausality benchmarks, all reasoning algorithms are now seeing substantial speedups.
 
-| Benchmark (Large Scale)      | Time Before (Old `MatrixGraph` Core) | Time After (New `CsmGraph` Core) | Improvement Factor |
-|:-----------------------------|:-------------------------------------|:---------------------------------|:-------------------|
-| `reason_all_causes`          | 70.221 ms                            | **51.70 µs**                     | **~1,358x**        |
-| `reason_subgraph_from_cause` | 34.933 ms                            | **25.79 µs**                     | **~1,354x**        |
-| `reason_shortest_path`       | 35.424 ms                            | **43.80 µs**                     | **~808x**          |
+| Benchmark (Large Scale)      | Before (Old `MatrixGraph`)     | After (New `CsmGraph`)     | Improvement Factor |
+|:-----------------------------|:-------------------------------|:---------------------------|:-------------------|
+| `reason_all_causes`          | 70.221 ms                      | **51.70 µs**               | **~1,358x**        |
+| `reason_subgraph_from_cause` | 34.933 ms                      | **25.79 µs**               | **~1,354x**        |
+| `reason_shortest_path`       | 35.424 ms                      | **43.80 µs**               | **~808x**          |
 
 ### What This Means for DeepCausality
 
