@@ -39,9 +39,7 @@ to be modified, you call `.unfreeze()` and your graph structure can evolve furth
 ## Performance That Speaks for Itself
 
 By freezing a graph into a stable `CsmGraph`, we eliminate CPU cache misses inherent to traditional flexible graph
-structures, thus allowing the CPU to operate with maximum efficiency.
-
-The results are transformational: On large graphs with millions of nodes and edges, reasoning algorithms are now seeing
+structures, thus allowing the CPU to operate with maximum efficiency. The results are transformational: On large graphs with millions of nodes and edges, reasoning algorithms are now seeing
 substantial speedups.
 
 | Benchmark (Large Scale)      | Time Before (Old `MatrixGraph` Core) | Time After (New `CsmGraph` Core) | Improvement Factor |
@@ -61,8 +59,7 @@ to:
 
 ## Conclusion
 
-UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs. Get Started with UltraGraph 0.8
-Today!
+UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs. 
 
 * Explore [the code and examples on GitHub](https://github.com/deepcausality-rs/deep_causality/tree/main/ultragraph).
 * [Join the community](https://deepcausality.com/community).
