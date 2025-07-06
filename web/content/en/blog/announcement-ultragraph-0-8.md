@@ -1,6 +1,6 @@
 ---
 title: UltraGraph 0.8 A Foundational Leap into Graph Analytics
-description: This post summarizes the new feature of UltrGraph v.0.8
+description: This post summarizes the new feature of UltraGraph v.0.8
 date: 2025-07-06
 author: Marvin Hansen
 ---
