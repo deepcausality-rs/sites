@@ -200,9 +200,9 @@ that is end to end explainable to support advanced use cases for dynamic causal 
 
 Get Started with DeepCausality 0.8. The Future is Now!
 
-* Check out the Release Notes for full details.
 * Explore the [code examples on GitHub](https://github.com/deepcausality-rs/deep_causality/tree/main/examples).
-* **Join the [community]**(https://deepcausality.com/community/).
+* Join the [community](https://deepcausality.com/community/).
+* Join the [Discord Server](https://discord.gg/Bxj9P7JXSj)
 
 ## About
 
