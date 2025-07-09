@@ -170,7 +170,7 @@ _get_current_day_index_, the graph node holding the current day data can be retr
 existing _get_node_ methods from the context. Advanced users can overwrite the TimeIndexable, CurrentTimeIndex, and
 PreviousTimeIndex to customize time indexing to specific requirements.
 
-## 🗺️ Unified Adjustable Trait Across All Context Types
+## 🗺️ Unified Adjustable Trait
 
 Modeling dynamic systems requires contexts that can evolve. DeepCausality 0.8 introduces a simplified and more powerful
 way to handle dynamic context data. All AdjustableXYZ types are gone for good. Now, you work with primary context types,
