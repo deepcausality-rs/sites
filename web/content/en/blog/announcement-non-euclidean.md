@@ -125,7 +125,7 @@ Navigation Systems (GNSS) such as GPS, Galileo, or GLONASS.
 Quaternions efficiently model 3D orientation in space and are used for robotics, computer vision, and inertial
 navigation systems.
 
-DeepCasuality 0.8 introduces the unique capability of flexible integration of heterogeneous geometries. For example, a
+DeepCausality 0.8 introduces the unique capability of flexible integration of heterogeneous geometries. For example, a
 Euclidean context represents data in a Euclidean representation whereas additional contexts for QuaternionSpace or
 LorentzianSpacetime represent non-Euclidean data. DeepCausality supports multiple contexts since 0.6 and, because of its
 generic design, a QuaternionSpace context will be statically verified by the compiler to hold only QuaternionSpace data
@@ -185,7 +185,7 @@ robust, and reliable.
 - The is_active, number_active, and percent_active API methods are gone for good as these became untenable in the new
   unified reasoning design.
 - DeepCausality 0.8 updated to UltraGraph 0.8, which boost performance on a range of 12 benchmarks on average by 300x.
-  See the UltraGraph announcement for details.
+  See the [UltraGraph announcement for details.](https://deepcausality.com/blog/announcement-ultragraph-0-8)
 - Groundwork for emergent dynamic causality has been done via an initial implementation of a generic generative process
   that dynamically constructs causal graphs or context at runtime. This starts the implementation of dynamic causal
   emergence as outlined in the Effect Propagation Process article. However, due to the novelty of dynamic causal
