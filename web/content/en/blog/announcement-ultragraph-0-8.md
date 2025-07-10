@@ -39,13 +39,26 @@ to be modified, you call `.unfreeze()` and your graph structure can evolve furth
 ## Performance That Speaks for Itself
 
 By freezing a graph into a stable `CsmGraph`, we eliminate CPU cache misses inherent to traditional flexible graph
-structures, thus allowing the CPU to operate with maximum efficiency. The results are transformational: On the DeepCausality benchmarks, all reasoning algorithms are now seeing substantial speedups.
+structures, thus allowing the CPU to operate with maximum efficiency. The following table compares the performance
+of graph-based reasoning algorithms in DeepCausality before and after the `UltraGraph` rewrite. The "After" benchmarks
+were run on a frozen `CsmGraph`, which leverages a highly efficient Compressed Sparse Row (CSR) memory layout.
 
-| Benchmark (Large Scale)      | Before (Old `MatrixGraph`)     | After (New `CsmGraph`)     | Improvement Factor |
-|:-----------------------------|:-------------------------------|:---------------------------|:-------------------|
-| `reason_all_causes`          | 70.221 ms                      | **51.70 µs**               | **~1,358x**        |
-| `reason_subgraph_from_cause` | 34.933 ms                      | **25.79 µs**               | **~1,354x**        |
-| `reason_shortest_path`       | 35.424 ms                      | **43.80 µs**               | **~808x**          |
+| Benchmark                                            | Time Before (Old) | Time After (New) | Improvement Factor |
+|------------------------------------------------------|------------------:|-----------------:|-------------------:|
+| `small_linear_graph_reason_all_causes`               |          2.760 µs |         78.79 ns |           **~35x** |
+| `small_linear_graph_reason_subgraph_from_cause`      |          1.507 µs |         52.41 ns |           **~28x** |
+| `small_linear_graph_reason_shortest_path`            |          1.690 µs |        120.19 ns |           **~14x** |
+| `medium_linear_graph_reason_all_causes`              |        509.940 µs |          5.23 µs |           **~97x** |
+| `medium_linear_graph_reason_subgraph_from_cause`     |        245.250 µs |          2.63 µs |           **~93x** |
+| `medium_linear_graph_reason_shortest_path`           |        286.080 µs |          4.35 µs |           **~65x** |
+| `large_linear_graph_reason_all_causes`               |         70.221 ms |         51.70 µs |        **~1,358x** |
+| `large_linear_graph_reason_subgraph_from_cause`      |         34.933 ms |         25.79 µs |        **~1,354x** |
+| `large_linear_graph_reason_shortest_path`            |         35.424 ms |         43.80 µs |          **~808x** |
+| `small_multi_layer_graph_reason_all_causes`          |          1.248 µs |         43.59 ns |           **~28x** |
+| `small_multi_layer_graph_reason_subgraph_from_cause` |        489.420 ns |         32.02 ns |           **~15x** |
+| `small_multi_layer_graph_reason_shortest_path`       |        427.450 ns |         62.99 ns |            **~7x** |
+
+Average Speedup across all use cases: ~300x
 
 ### What This Means for DeepCausality
 
@@ -58,7 +71,7 @@ to:
 
 ## Conclusion
 
-UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs. 
+UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs.
 
 * Explore [the code and examples on GitHub](https://github.com/deepcausality-rs/deep_causality/tree/main/ultragraph).
 * [Join the community](https://deepcausality.com/community).
