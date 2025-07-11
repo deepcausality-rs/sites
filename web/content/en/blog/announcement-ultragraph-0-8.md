@@ -60,7 +60,47 @@ were run on a frozen `CsmGraph`, which leverages a highly efficient Compressed S
 
 Average Speedup across all use cases: ~300x
 
-### What This Means for DeepCausality
+## Graph Algorithms
+
+The `UltraGraph` crate provides a selection of high-performance algorithms for
+graph analysis. These algorithms are implemented on the static optimized graph structure for fast and
+efficient computation.
+
+* **`find_cycle()`**: Finds a single cycle in the
+  graph and returns the path of nodes that form it.
+
+* **`has_cycle()`**: Checks if the graph contains any
+  directed cycles.
+
+* **`topological_sort()`**: Computes a topological
+  sort of the graph if it is a DAG.
+
+* **`is_reachable(start_index, stop_index)`**: Checks
+  if a path of any length exists from a start node to a
+  stop node.
+
+* **`shortest_path_len(start_index, stop_index)`**:
+  Returns the length (number of nodes) of the shortest
+  path from a start node to a stop node.
+
+* **`shortest_path(start_index, stop_index)`**: Finds
+  the complete shortest path (sequence of nodes) from a
+  start node to a stop node.
+
+* **`shortest_weighted_path(start_index, stop_
+ index)`**: Finds the shortest path in a weighted graph
+  using Dijkstra's algorithm, returning the path and its
+  total cost.
+
+* **`strongly_connected_components()`**: Finds all
+  Strongly Connected Components (SCCs) in the graph using
+  Tarjan's algorithm, returning a list of node sets, where
+  each set represents an SCC.
+
+* **`betweenness_centrality()`**: Measures a node's importance by counting how often it
+  appears on the shortest paths between all other pairs of nodes using Brandes' algorithm.
+
+## What This Means for DeepCausality
 
 This new version of `ultragraph` is the engine powering the next version of DeepCausality. It provides the foundation
 to:
