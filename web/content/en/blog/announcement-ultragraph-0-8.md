@@ -100,7 +100,7 @@ efficient computation.
 * **`betweenness_centrality()`**: Measures a node's importance by counting how often it
   appears on the shortest paths between all other pairs of nodes using Brandes' algorithm.
 
-### What This Means for DeepCausality
+## What This Means for DeepCausality
 
 This new version of `ultragraph` is the engine powering the next version of DeepCausality. It provides the foundation
 to:
