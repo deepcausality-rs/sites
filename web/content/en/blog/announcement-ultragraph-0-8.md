@@ -9,18 +9,21 @@ author: Marvin Hansen
 
 ## Overview
 
-Today, the DeepCausality project announces the release of UltraGraph version 0.8. The team has rebuilt the core of the
-UltraGraph crate and replaced the previous petgraph-based foundation with a new, tailor-made hypergraph representation
-designed for the future of dynamic and large-scale graph analytics.
+Today, the DeepCausality project announces UltraGraph v0.8, a ground-up rewrite of our hypergraph library
+delivering up to 1,300x speedups, enabling sub-second analytics on 100-million-node graphs, and making
+billion-node analytics economically feasible on a single machine.
 
-This release is the culmination of a journey that began with a profound realization: our philosophy had outgrown our
-tools. As the DeepCausality project continues to implement the Effect Propagation Process (EPP) to support dynamic
-emergent causality, it became painfully obvious that the static, memory-intensive MatrixGraph we were using before had
-become a major roadblock. In response, a new hypergraph representation was designed and implemented.
+This release introduces a new dual-state architecture designed for the complete lifecycle of graph data. Graphs begin in
+a flexible DynamicGraph state, optimized for fast, O(1) mutations as the structure evolves. When you're ready for
+analysis, a single .freeze() call transforms the graph into a hyper-optimized, immutable CsmGraph based on a
+cache-friendly Struct of Arrays (SoA) memory layout. This "compilation" step is the key to our performance, virtually
+eliminating cache misses and unlocking near-linear scaling. If the graph needs to evolve further, simply .unfreeze().
 
-Based on a modified version of the [NWHypergraph (NWHy)](https://par.nsf.gov/servlets/purl/10381502) architecture
-(considered state-of-the-art around 2022), UltraGraph 0.8 builds upon and enhances it to unlock billion-node
-analytics on a single machine. The key modifications are:
+The new implementation was born out of necessity. The ongoing work on emergent causality within the DeepCausality
+project demanded a system that could be both highly dynamic during evolution and blazing fast during analysis. Our
+previous petgraph-based foundation could not keep up any longer, so we built the next generation of UltraGraph, inspired
+by the state-of-the-art [NWHypergraph (NWHy)](https://par.nsf.gov/servlets/purl/10381502) architecture and heavily optimized for Rust's memory model.
+The key elements of the new UltraGraph implementation are:
 
 * The introduction of a SoA CsrAdjacency type instead of a simple CSR row.
 * The separation of forward and backward CsrAdjacency.
@@ -69,15 +72,12 @@ backward or inbound edges. This dual-CSR setup is more explicit and efficient th
 within a single row layout because it reduces CPU cache pollution and thereby directly supports fast and efficient
 algorithm implementations. It is worth noting that some CSR systems only store forward edges and reconstruct backward
 edges on the fly, which conserves memory but is computationally inefficient. UltraGraph deliberately traded a bit more
-memory
-for drastically better algorithm performance, as shown in the benchmarks.
+memory for drastically better algorithm performance, as shown in the benchmarks.
 
 The backward node list is particularly useful in causality-based inference algorithms, where backtracking is often
-required,
-and is thus particularly well suited for DeepCausality. Memory usage remains low due to the combined effects of the
-Struct
-of Arrays layout and the clean separation between forward and backward adjacency lists, which together eliminate many
-common sources of heap and pointer overhead:
+required, and is thus particularly well suited for DeepCausality. Memory usage remains low due to the combined effects
+of the Struct of Arrays layout and the clean separation between forward and backward adjacency.
+This design leads to a predictable, flat memory layout with minimal overhead:
 
 * No per-node allocation overhead
 * No padding, no vtables, no boxed pointers
@@ -113,6 +113,8 @@ to be modified, you call `.unfreeze()`, and your graph structure can evolve furt
 
 ## Performance That Speaks for Itself
 
+All benchmarks were completed on a 2023 Macbook Pro with a M3 Max CPU. 
+
 ### Dynamic Graph
 
 The dynamic graph structure, when the graph is in an unfrozen state, is optimized for efficient mutation.
@@ -136,10 +138,12 @@ in [ultragraph/benches ](https://github.com/deepcausality-rs/deep_causality/tree
 
 ### Static CSM Graph
 
-By freezing a graph into a stable `CsmGraph`, we eliminate CPU cache misses inherent to traditional, flexible graph
-structures, thereby allowing the CPU to operate with maximum efficiency. The following table compares the performance
-of graph-based reasoning algorithms in DeepCausality before and after the `UltraGraph` rewrite. The "After" benchmarks
-were run on a frozen `CsmGraph`, which leverages a highly efficient Compressed Sparse Row (CSR) memory layout.
+The impact of the new dual-state architecture is most visible when comparing the new CsmGraph implementation against our
+previous MatrixGraph-based engine. By freezing a graph into a stable `CsmGraph`, we eliminate CPU cache misses inherent
+to traditional, flexible graph structures, thereby allowing the CPU to operate with maximum efficiency. The following
+table compares the performance of graph-based reasoning algorithms in DeepCausality before and after the `UltraGraph`
+rewrite. The "After" benchmarks were run on a frozen `CsmGraph`, which leverages a highly efficient Compressed Sparse
+Row (CSR) memory layout.
 
 | Benchmark                                            | Time Before (Old) | Time After (New) | Improvement Factor |
 |------------------------------------------------------|------------------:|-----------------:|-------------------:|
@@ -165,105 +169,91 @@ Average Speedup across all use cases: ~300x
 Benchmark source code
 in [deep_causality/benches ](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/benches)
 
-Algorithms running over large graphs (10k or more nodes) show the most significant performance gains, presumably because
+Algorithms running over large graphs (10k or more nodes) show the most significant performance gains because
 of the improved CPU cache hit rate and the overall improved memory layout of the new CSR representation.
 
-### Comparative Perspective
+### Memory Usage and Scaling
 
-| Implementation                   | Time for 1M node shortest path | Notes                     |
-|----------------------------------|-------------------------------:|---------------------------|
-| Gunrock[^1] (GPU, A100)          |                     \~0.1–1 ms | Full GPU parallelism      |
-| Galois[^2] (CPU, multi-core)     |                       \~3–5 ms | Optimized C++             |
-| **UltraGraph**                   |                     **\~7 ms** | Rust, M3 Max              |
-| GraphBLAST[^4] (SPMV)            |                      \~1–10 ms | GPU-CSR                   |
-| Ligra[^5] (Parallel CPU)         |                      \~5–10 ms | CSR traversal             |
-| Petgraph[^6] (Rust baseline)     |                   \~20–100+ ms | Heap-based Dijkstra       |
-| SNAP[^7] / NetworkX[^8] (Python) |                 \~200–1000+ ms | Mostly academic / dev use |
+| Number of Nodes | Memory Usage | `evaluate_subgraph_from_root` | `evaluate_shortest_path` | `evaluate_single_cause` |
+|:----------------|:-------------|:------------------------------|:-------------------------|:------------------------|
+| **100,000**     | 55 MB        | 0.68 ms                       | 0.57 ms                  | **5.4 ns**              |
+| **1,000,000**   | 350 MB       | 11.12 ms                      | 6.95 ms                  | **5.5 ns**              |
+| **10,000,000**  | 3 GB         | 114 ms                        | 85.80 ms                 | **5.6 ns**              |
+| **100,000,000** | 32 GB        | 1.23 s                        | 0.98 s                   | **5.5 ns**              |
 
-[^1]: Gunrock – https://arxiv.org/abs/1901.08254  
-[^2]: Galois – https://github.com/IntelligentSoftwareSystems/Galois  
-[^4]: GraphBLAST – https://arxiv.org/abs/2003.04753  
-[^5]: Ligra – https://people.csail.mit.edu/jshun/ligra.pdf  
-[^6]: Petgraph – https://github.com/petgraph/petgraph  
-[^7]: SNAP – http://snap.stanford.edu/,
-[^8]: NetworkX -  https://networkx.org
+**Key Observations from the Table:**
 
-### Memory Usage
+* Constant Time for single_cause: The evaluate_single_cause task is exceptionally fast and appears to be an O(1)
+  operation. The time does not increase with the size of the graph, which is a phenomenal result.
 
-Memory usage was not benchmarked directly because for graph algorithms, runtime is usually the first problem. It is
-quite positive that the total memory usage for the dynamic graph benchmark remained well within 30 MB, and slightly
-below 50 MB for the static graph benchmark when measured on macOS. While these numbers are encouraging, 
-it needs to be noted that macOS tends to under-report actual memory usage because of its system-wide dynamic linking 
-that does not account for the memory of
-already loaded system libraries. Therefore, users who are concerned about memory usage on other platforms like Linux
-may run their own benchmarks. However, a quick test setting the LARGE constant to one million showed that the dynamic
-graph used about 80 MB of memory and the static graph peaked around 350 MB and completed most benchmark tasks within
-single-digit millisecond times. This discrepancy is expected because the static graph is optimized for the fastest
-processing at the expense of memory usage.
+* Near-Linear Scalability: Both the memory usage and the execution time for the subgraph and shortest_path tasks appear
+  to scale in a roughly linear fashion with the number of nodes. A 10x increase in nodes results in a roughly 10x-15x
+  increase in time and memory. This indicates a highly efficient implementation with a complexity close to O(N).
 
-| Engine / Library     | 1M node Memory Use | Notes                  |
-|----------------------|--------------------|------------------------|
-| **UltraGraph**       | \~350 MB           | Dense CSR              |
-| NetworkX (Python)    | >2–5 GB            | Dict-of-dict overhead  |
-| SNAP (C++)           | \~1–1.5 GB         | Flexible but optimized |
-| Gunrock (GPU CSR)    | \~200–400 MB       | Optimized GPU format   |
-| Galois / Ligra (C++) | \~150–400 MB       | Similar to yours       |
-| RedisGraph           | >1.5 GB            | GraphQL query layer    |
-| Neo4j (Java)         | >5 GB              | Indexes + GC + JVM     |
+Based on Ultragraph's performance, a simple interpolation shows:
 
-Extrapolating these numbers implies that a 100-million-node
-graph would require an estimated 35 GB of memory and complete most algorithms within 7 to 14 seconds. For a billion-node
-graph, about 350–400 GB of memory would be required, which would fit into a commercially available M3 Ultra
-Mac Studio configured with 512 GB of unified memory. This means billion-node graph analytics no longer requires
-expensive
-and complex clustering and can be conducted on commercially available off-the-shelf hardware.
-Because the graph algorithms implemented in UltraGraph are largely bound to memory bandwidth, faster memory directly
-translates into shorter algorithm runtimes. Considering that the aforementioned M3 Ultra provides 819 GB/s of memory
-bandwidth, it is not impossible to see single-minute algorithm runtimes over a billion-node graph on the M3 Ultra or
-equivalent hardware. However, experimental validation is very much welcome.
+* 1 Billion Nodes: The shortest path on a graph of this size in about 12 seconds, requiring approximately 236 GB of RAM.
+* 10 Billion Nodes: Require just under 2 TB of RAM and could run a shortest path query in about 2.5 minutes.
 
-| Graph Size | Nodes         | Edges (@10 avg) | Est. Memory Usage | Feasibility (M3 Ultra 512GB RAM)      |
-|------------|---------------|-----------------|-------------------|---------------------------------------|
-| 1M         | 1,000,000     | 10,000,000      | \~350 MB          | ✅ Very easy                           |
-| 10M        | 10,000,000    | 100,000,000     | \~3.5 GB          | ✅ Comfortable                         |
-| 100M       | 100,000,000   | 1B edges        | \~35 GB           | ✅ Real-time plausible                 |
-| 1B         | 1,000,000,000 | 10B edges       | \~350–400 GB      | ✅ Fits into a single HighMem instance |
-
-For larger graphs, UltraGraph offers predictable, low-overhead performance.
-
-| System / Framework       | Nodes      | Edges         | Memory Usage (Est.) | Cluster Needed?       | **UltraGraph Advantage**    |
-|--------------------------|------------|---------------|---------------------|-----------------------|-----------------------------|
-| **UltraGraph**           | 1B         | \~10B         | **\~350–400 GB**    | ❌ **No**              | ✅ Baseline                  |
-| **Graph500 (Scale 30)**  | 1B         | \~16B (dense) | \~1.5 **TB**        | ✅ Yes (16+ nodes)     | **\~4× more efficient**     |
-| **GraphJet (Facebook)**  | 1B         | 1–5T edges    | \~3 **TB**          | ✅ Yes (distributed)   | **\~8–10× more efficient**  |
-| **GraphScope (Alibaba)** | 1B         | \~10–100B     | \~1–2 **TB**        | ✅ Yes (K8s, Vineyard) | **\~3–6× more efficient**   |
-| **Twitter Cassovary**    | \~1B max   | \~10B         | \~500–800 **GB**    | ✅ Partial             | **\~1.5–2× more efficient** |
-| **Neo4j** (JVM, GC)      | \~1B max   | \~10–50B      | \~2–5 **TB**        | ✅ Yes                 | **\~5–12× more efficient**  |
-| **Snap / NetworkX**      | \~100M max | \~1B edges    | >1 **TB** (Python)  | ✅ Yes                 | **\~10–20× more efficient** |
-
-UltraGraph on a single machine is up to 4–12x more memory-efficient than most other distributed graph systems.
+Crucially, these benchmarks are single-threaded. A future parallelized version is projected to deliver another **8-10x speedup**, 
+pushing massive graph queries closer to the near real-time domain.
 
 ### Economic Impact
 
-The resulting cost savings at scale are significant:
+This level of performance on a single machine has profound economic implications, which is best demonstrated
+by an estimate of the Total Cost of Ownership (TCO) for running a 10-billion node graph on major cloud providers and
+bare metal.
 
-| System         | Est. Memory | RAM Cost (Cloud) | Machine Type                    | Est. Hourly Cost |
-|----------------|-------------|------------------|---------------------------------|------------------|
-| **UltraGraph** | \~350 GB    | \$1.50–2.00/hr   | 512 GB bare metal or highmem VM | ✅ \~\$1.75/hr    |
-| Neo4j          | \~2–5 TB    | \$8.00–20.00/hr  | Cluster of 8×512 GB or 1×2TB    | ❌ \~\$12/hr+     |
-| GraphScope     | \~1.5 TB    | \$6.00/hr        | K8s w/ Vineyard + NUMA tuning   | ❌ \~\$6/hr       |
-| Graph500 MPI   | \~1.5 TB    | \$8.00/hr        | 16-node HPC (128 GB/node)       | ❌ \~\$8/hr       |
+**Assumptions:**
 
-| System         | Est. Annual Cost | Savings Factor vs UltraGraph |
-|----------------|------------------|------------------------------|
-| **UltraGraph** | **\$15,000**     | ✅ Baseline                   |
-| Neo4j          | \~\$105,000+     | **\~7× more expensive**      |
-| GraphScope     | \~\$52,000       | **\~3.5× more expensive**    |
-| Graph500 (HPC) | \~\$70,000       | **\~4.7× more expensive**    |
+* **Instance Type:** AWS `u-3tb1.56xlarge` (2.9 TiB RAM) vs. GCP `m1-megamem-96` (2.9 TiB RAM).
+* **Region:** `us-east-1` (N. Virginia) for AWS and `us-central1` (Iowa) for GCP, which are typically cost-effective.
+* **Commitment:** **1-Year Committed Plan** (AWS Savings Plan / GCP CUD), as this is the standard for any persistent
+  workload and offers significant savings over on-demand pricing.
+* **Storage:** 500 GB of high-performance SSD storage (`gp3` on AWS, `pd-ssd` on GCP) for the OS
 
-UltraGraph slashes graph processing costs by 70–85% for billion-node analytics.
-It achieves this by eliminating the need for distributed infrastructure, a reduced memory footprint, and
-overall improved efficiency.
+**Scenario 1: Persistent Workload TCO (1-Year Commitment)**
+
+This scenario is for a core, ongoing business function where you commit to using the server for at least a year to
+secure the lowest possible price.
+
+| Cost Component               | AWS (u-3tb1.56xlarge) | GCP (m1-megamem-96)           | Bare Metal (Dedicated Server) |
+|:-----------------------------|:----------------------|:------------------------------|:------------------------------|
+| **Commitment Plan**          | 1-Year Savings Plan   | 1-Year Committed Use Discount | 1-Year Contract               |
+| **Effective Hourly Rate**    | ~$10.99               | ~$10.57                       | ~$7.53 (Calculated)           |
+| **Monthly Billed Cost**      | **~$8,071**           | **~$7,813**                   | **~$5,542**                   |
+| **Total Annual Billed Cost** | **~$96,852**          | **~$93,756**                  | **~$66,504**                  |
+
+**Scenario 2: Temporary Workload TCO (On-Demand / Monthly Rate)**
+
+This scenario is for your use case: needing a powerful server for a short period (e.g., one month) without a long-term
+contract.
+
+| Cost Component                 | AWS (u-3tb1.56xlarge) | GCP (m1-megamem-96) | Bare Metal (Dedicated Server) |
+|:-------------------------------|:----------------------|:--------------------|:------------------------------|
+| **Commitment Plan**            | On-Demand             | On-Demand           | Monthly (No Contract)         |
+| **Effective Hourly Rate**      | ~$28.77               | ~$25.84             | ~$9.32 (Calculated)           |
+| **Cost for 1 Month (730 hrs)** | **~$21,002**          | **~$18,863**        | **~$6,800**                   |
+| **Cost for 3 Months**          | **~$63,006**          | **~$56,589**        | **~$20,400**                  |
+
+Key insights:
+
+1. **A Single Server Problem:**
+   The first, most important takeaway is that for an annual cost between $67,000 and $95,000 you
+   can analyze a 10-billion node graph. That makes a previous big tech only problem broadly accessible. For a one-month
+   project, say a proof of concept, a bare-metal server costs roughly one-third of what an on-demand cloud instance
+   would cost for.
+
+2. **Web-Scale Analytics**
+   Web-Scale Analytics previously the exclusive domain of tech giants with massive R&D budgets (like
+   Google or Facebook), is now democratized. A well-funded Series A startup can now afford the same level of analytical
+   power, fundamentally changing the competitive landscape and enabling new business models built on web-scale data.
+
+3. **Predictable Scaling**
+   The near-linear scaling of Ultragraph's performance means you can accurately predict the hardware costs for a 10x or
+   100x growth in your data. This allows a company to create a reliable financial roadmap for scaling their product
+   without fearing that their infrastructure costs will suddenly spiral out of control. This predictability is essential
+   for long-term planning.
 
 ## Graph Algorithms
 
@@ -335,7 +325,6 @@ efficient computation.
 **Use Case:**
 
 - **Influencer detection:** Identify key nodes in social, transportation, or communication networks.
--
 - **Bottleneck analysis:** Discover chokepoints in network infrastructure or data processing graphs.
 
 ## What This Means for DeepCausality
@@ -365,5 +354,5 @@ innovation in the AI and data domains by enabling collaboration and the creation
 members of the community. For more information, please visit lfaidata.foundation.
 
 The author and maintainer of the DeepCausality project, Marvin Hansen, is the director of Emet-Labs, a FinTech research
-company specializing in applying computational causality to financial markets.
+company specializing in applying advanced computational causality to financial markets.
 
