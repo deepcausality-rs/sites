@@ -22,8 +22,8 @@ eliminating cache misses and unlocking near-linear scaling. If the graph needs t
 The new implementation was born out of necessity. The ongoing work on emergent causality within the DeepCausality
 project demanded a system that could be both highly dynamic during evolution and blazing fast during analysis. Our
 previous petgraph-based foundation could not keep up any longer, so we built the next generation of UltraGraph, inspired
-by the state-of-the-art [NWHypergraph (NWHy)](https://par.nsf.gov/servlets/purl/10381502) architecture and heavily optimized for Rust's memory model.
-The key elements of the new UltraGraph implementation are:
+by the state-of-the-art [NWHypergraph (NWHy)](https://par.nsf.gov/servlets/purl/10381502) architecture and heavily
+optimized for Rust's memory model. The key elements of the new UltraGraph implementation are:
 
 * The introduction of a SoA CsrAdjacency type instead of a simple CSR row.
 * The separation of forward and backward CsrAdjacency.
@@ -113,7 +113,7 @@ to be modified, you call `.unfreeze()`, and your graph structure can evolve furt
 
 ## Performance That Speaks for Itself
 
-All benchmarks were completed on a 2023 Macbook Pro with a M3 Max CPU. 
+All benchmarks were completed on a 2023 Macbook Pro with a M3 Max CPU.
 
 ### Dynamic Graph
 
@@ -169,8 +169,12 @@ Average Speedup across all use cases: ~300x
 Benchmark source code
 in [deep_causality/benches ](https://github.com/deepcausality-rs/deep_causality/tree/main/deep_causality/benches)
 
-Algorithms running over large graphs (10k or more nodes) show the most significant performance gains because
-of the improved CPU cache hit rate and the overall improved memory layout of the new CSR representation.
+The new architecture causes the largest and most significant performance gains for algorithms running over large
+graphs (10k or more nodes) because of its close alignment with contemporary hardware.
+By combining an instantaneous O(1) lookup with a perfectly linear scan over a node's neighbors, Ultragraph creates the
+ideal scenario for the CPU's prefetcher to easily anticipates a straight-line sprint through memory. The result becomes
+more notable the more data the prefetcher can load ahead of time, thus the disproportional performance gains on larger
+graphs.
 
 ### Memory Usage and Scaling
 
@@ -181,22 +185,39 @@ of the improved CPU cache hit rate and the overall improved memory layout of the
 | **10,000,000**  | 3 GB         | 114 ms                        | 85.80 ms                 | **5.6 ns**              |
 | **100,000,000** | 32 GB        | 1.23 s                        | 0.98 s                   | **5.5 ns**              |
 
-**Key Observations from the Table:**
+**Key Observations:**
 
-* Constant Time for single_cause: The evaluate_single_cause task is exceptionally fast and appears to be an O(1)
-  operation. The time does not increase with the size of the graph, which is a phenomenal result.
+* **Constant Time to get a single node**: The evaluate_single_cause task is exceptionally fast and appears to be an O(1)
+  operation. The benchmark evaluate_single_cause returns always about 5.5. ns regardless of whether the node
+  lookup happens before or during the benchmark loop and regardless of whether blackbox is used or not. The time does
+  not change with the size of the graph because the implementation of the underlying get_node is just two 0(1) array
+  lookup to find the index and than a straight redirect to a virtual memory address, which in this case, is close to the
+  physical limit of Apples UMA architecture. On another architectures, the exact value may differ, but in general should
+  remain constant and only be bound by the bandwidth and latency of the physical memory.
 
-* Near-Linear Scalability: Both the memory usage and the execution time for the subgraph and shortest_path tasks appear
+* **Sub-Second traversal up to a hundred million nodes:** Notice, this uses a linear graph as base line by purpose to
+  estimate the best case scenario. On complex or imbalanced graphs, you will see different results. The key here is that
+  a linear graph plays exactly to the strength of the continues memory layout created by the underlying CSR structure.
+
+* **Near-Linear Scalability:** Both the memory usage and the execution time for the subgraph and shortest_path tasks
+  appear
   to scale in a roughly linear fashion with the number of nodes. A 10x increase in nodes results in a roughly 10x-15x
   increase in time and memory. This indicates a highly efficient implementation with a complexity close to O(N).
+
+* **All benchmarks are single-threaded.** The performance you see is from a single core. Initial experiments showed that
+  for graphs up to 1 million nodes, the overhead of even highly-optimized parallel libraries like rayon resulted in a
+  net performance loss of 30% or more compared to the single-threaded version. This is a testament to the extreme
+  efficiency of the CSR layout when paired with modern CPU caches and prefetchers.
+  The results suggest that meaningful gains from concurrency will only appear on massive graphs (likely 10M-50M nodes
+  and above). However, this requires a concurrency model carefully designed to avoid the cache-invalidation issues
+  common in work-stealing schedulers (used by rayon and Tokio). Developing such a cache-friendly concurrency
+  model was out of scope for this release, but it remains an open challenge for future work. Contributions are
+  welcome.
 
 Based on Ultragraph's performance, a simple interpolation shows:
 
 * 1 Billion Nodes: The shortest path on a graph of this size in about 12 seconds, requiring approximately 236 GB of RAM.
 * 10 Billion Nodes: Require just under 2 TB of RAM and could run a shortest path query in about 2.5 minutes.
-
-Crucially, these benchmarks are single-threaded. A future parallelized version is projected to deliver another **8-10x speedup**, 
-pushing massive graph queries closer to the near real-time domain.
 
 ### Economic Impact
 
