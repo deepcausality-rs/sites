@@ -184,13 +184,11 @@ graphs.
 | **1,000,000**   | 350 MB       | 11.12 ms                      | 6.95 ms                  | **5.5 ns**              |
 | **10,000,000**  | 3 GB         | 114 ms                        | 85.80 ms                 | **5.6 ns**              |
 | **100,000,000** | 32 GB        | 1.23 s                        | 0.98 s                   | **5.5 ns**              |
-
+l
 **Key Observations:**
 
-* **Constant Time to get a single node**: The evaluate_single_cause task is exceptionally fast and appears to be an O(1)
-  operation. The benchmark evaluate_single_cause returns always about 5.5. ns regardless of whether the node
-  lookup happens before or during the benchmark loop and regardless of whether blackbox is used or not. The time does
-  not change with the size of the graph because the implementation of the underlying get_node is just two 0(1) array
+* **Constant Time to get a single node**: The benchmark evaluate_single_cause returns always takes about 5.5. ns regardless of
+  whether the node lookup happens before or during the benchmark loop and regardless of whether blackbox is used or not. The time does not change with the size of the graph because the implementation of the underlying get_node is just two O(1) array
   lookup to find the index and than a straight redirect to a virtual memory address, which in this case, is close to the
   physical limit of Apples UMA architecture. On another architectures, the exact value may differ, but in general should
   remain constant and only be bound by the bandwidth and latency of the physical memory.
@@ -235,9 +233,6 @@ bare metal.
 
 **Scenario 1: Persistent Workload TCO (1-Year Commitment)**
 
-This scenario is for a core, ongoing business function where you commit to using the server for at least a year to
-secure the lowest possible price.
-
 | Cost Component               | AWS (u-3tb1.56xlarge) | GCP (m1-megamem-96)           | Bare Metal (Dedicated Server) |
 |:-----------------------------|:----------------------|:------------------------------|:------------------------------|
 | **Commitment Plan**          | 1-Year Savings Plan   | 1-Year Committed Use Discount | 1-Year Contract               |
@@ -247,9 +242,6 @@ secure the lowest possible price.
 
 **Scenario 2: Temporary Workload TCO (On-Demand / Monthly Rate)**
 
-This scenario is for your use case: needing a powerful server for a short period (e.g., one month) without a long-term
-contract.
-
 | Cost Component                 | AWS (u-3tb1.56xlarge) | GCP (m1-megamem-96) | Bare Metal (Dedicated Server) |
 |:-------------------------------|:----------------------|:--------------------|:------------------------------|
 | **Commitment Plan**            | On-Demand             | On-Demand           | Monthly (No Contract)         |
@@ -257,24 +249,10 @@ contract.
 | **Cost for 1 Month (730 hrs)** | **~$21,002**          | **~$18,863**        | **~$6,800**                   |
 | **Cost for 3 Months**          | **~$63,006**          | **~$56,589**        | **~$20,400**                  |
 
-Key insights:
-
-1. **A Single Server Problem:**
-   The first, most important takeaway is that for an annual cost between $67,000 and $95,000 you
-   can analyze a 10-billion node graph. That makes a previous big tech only problem broadly accessible. For a one-month
-   project, say a proof of concept, a bare-metal server costs roughly one-third of what an on-demand cloud instance
-   would cost for.
-
-2. **Web-Scale Analytics**
-   Web-Scale Analytics previously the exclusive domain of tech giants with massive R&D budgets (like
-   Google or Facebook), is now democratized. A well-funded Series A startup can now afford the same level of analytical
-   power, fundamentally changing the competitive landscape and enabling new business models built on web-scale data.
-
-3. **Predictable Scaling**
-   The near-linear scaling of Ultragraph's performance means you can accurately predict the hardware costs for a 10x or
-   100x growth in your data. This allows a company to create a reliable financial roadmap for scaling their product
-   without fearing that their infrastructure costs will suddenly spiral out of control. This predictability is essential
-   for long-term planning.
+The most important takeaway is that for an annual cost between $67,000 and $95,000 you can analyze a 10-billion node
+graph. For a one-month long project, say a proof of concept, a bare-metal server costs roughly one-third of what an on-demand
+cloud instance would cost. Any series A funded startup can now at least explore large scale graph analytics without 
+over spending on engineering, hardware or expensive license fees for commercial solutions.  
 
 ## Graph Algorithms
 
@@ -359,7 +337,7 @@ to:
 
 ## Conclusion
 
-UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs.
+UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs. Try it. The Future is now. 
 
 * Explore [the code and examples on GitHub](https://github.com/deepcausality-rs/deep_causality/tree/main/ultragraph).
 * [Join the community](https://deepcausality.com/community).
