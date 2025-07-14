@@ -339,7 +339,7 @@ to:
 
 ## Conclusion
 
-UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs.
+UltraGraph 0.8 offers unprecedented speed for hypergraph analytics on larger graphs. Try it. The Future is now. 
 
 * Explore [the code and examples on GitHub](https://github.com/deepcausality-rs/deep_causality/tree/main/ultragraph).
 * [Join the community](https://deepcausality.com/community).
