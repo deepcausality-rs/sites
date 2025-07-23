@@ -11,8 +11,8 @@ Articles written by the DeepCausality team are listed in chronological order.
 
 ## 2025
 
-* **[The Effect Propagation Process](https://github.com/deepcausality-rs/papers/blob/main/effect_propagation_process/Effect_Propagation_Process.pdf)**
-* **[The Epistemology of the Effect Propagation Process](https://github.com/deepcausality-rs/papers/blob/main/epistemology_effect_propagation_process/Epistemology_Effect_Propagation_Process.pdf)**
+* **[The Effect Propagation Process](https://github.com/deepcausality-rs/papers/blob/main/effect_propagation_process/epp.pdf)**
+* **[The Epistemology of the Effect Propagation Process](https://github.com/deepcausality-rs/papers/blob/main/epistemology_effect_propagation_process/epp_epistemology.pdf)**
 * **[The Formalization of the Effect Propagation Process](https://github.com/deepcausality-rs/papers/blob/main/formalization_effect_propagation_process/epp_formalization.pdf)**
 * **[The Metaphysics of the Effect Propagation Process](https://github.com/deepcausality-rs/papers/blob/main/metaphysics_propagation_process/epp_metaphysics.pdf)**
 * **[The Ontology of the Effect Propagation Process](https://github.com/deepcausality-rs/papers/blob/main/ontology_propagation_process/epp_ontology.pdf)**
