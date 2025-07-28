@@ -184,12 +184,12 @@ graphs.
 | **1,000,000**   | 350 MB       | 11.12 ms                      | 6.95 ms                  | **5.5 ns**              |
 | **10,000,000**  | 3 GB         | 114 ms                        | 85.80 ms                 | **5.6 ns**              |
 | **100,000,000** | 32 GB        | 1.23 s                        | 0.98 s                   | **5.5 ns**              |
-l
+
 **Key Observations:**
 
 * **Constant Time to get a single node**: The benchmark evaluate_single_cause returns always takes about 5.5. ns regardless of
   whether the node lookup happens before or during the benchmark loop and regardless of whether blackbox is used or not. The time does not change with the size of the graph because the implementation of the underlying get_node is just two O(1) array
-  lookup to find the index and than a straight redirect to a virtual memory address, which in this case, is close to the
+  lookup to find the index and a straight redirect to a virtual memory address, which in this case, is close to the
   physical limit of Apples UMA architecture. On another architectures, the exact value may differ, but in general should
   remain constant and only be bound by the bandwidth and latency of the physical memory.
 
