@@ -28,7 +28,7 @@ Previously, causal reasoning flowed strictly along the predefined edges of the g
 in the graph. This enables sophisticated, adaptive reasoning patterns where the system can choose its own path through
 the graph, conditional on intermediate results.
 
-## ⚡ Flexible Collection Reasoning with Aggregate Logic
+## ⚡ Collection Reasoning with Aggregate Logic
 
 Reasoning over a causal collection is no longer limited to a simple "all or nothing" mode. DeepCausality 0.8.2
 introduces a configurable `AggregateLogic` enum that allows you to specify how results from a group of causaloids should
@@ -69,7 +69,7 @@ examples for:
 * CATE: [Conditional Average Treatment Effects.](https://github.com/deepcausality-rs/deep_causality/tree/main/examples/epp_cate)
 * DBN: [Dynamic Bayesian Networks.](https://github.com/deepcausality-rs/deep_causality/tree/main/examples/epp_dbn)
 * Granger: [Granger Causality for time series.](https://github.com/deepcausality-rs/deep_causality/tree/main/examples/epp_granger)
-* RCM: - [Rubin Causal Model.](https://github.com/deepcausality-rs/deep_causality/tree/main/examples/epp_rcm)
+* RCM: [Rubin Causal Model.](https://github.com/deepcausality-rs/deep_causality/tree/main/examples/epp_rcm)
 * SCM: [Structural Causal Model.](https://github.com/deepcausality-rs/deep_causality/tree/main/examples/epp_scm)
 
 The informed reader may wonder how DeepCausality can possibly express so many different causal methods in a uniform way. A large
