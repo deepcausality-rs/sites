@@ -9,7 +9,7 @@ author: Marvin Hansen
 
 ## Overview
 
-Overview DeepCausality v.0.6 now supports multiple contexts. The previous context API remains the same, meaning all
+DeepCausality v.0.6 now supports multiple contexts. The previous context API remains the same, meaning all
 existing code should compile as before. However, new API functionality was added to interact with additional contexts to
 enable more advanced use cases.
 
