@@ -1,7 +1,7 @@
 ---
 title: Lessons Learned from Rewriting UltraGraph
 description: This post summarizes the lessons learned from rewriting UltraGraph v.0.8
-date: 2025-08-08
+date: 2025-08-15
 author: Marvin Hansen
 ---
 
