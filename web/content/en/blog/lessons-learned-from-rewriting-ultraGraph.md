@@ -17,7 +17,7 @@ because data structures that are fast to mutate are fundamentally different from
 analyze. This subsequent quest resulted in deep insights into the trade-offs between flexibility and performance. Here
 are the key lessons learned along the way.
 
-## Lesson 1: There is excellent research on graph structures
+## Lesson 0: There is excellent research on graph structures
 
 As much as people love to joke about an AI slob, one useful application of LLMs is literature recommendation. Google
 Gemini suggested the [NWHy paper](https://ieeexplore.ieee.org/document/9835472) as a starting point and that has proven
