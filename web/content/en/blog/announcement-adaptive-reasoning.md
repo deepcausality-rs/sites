@@ -1,6 +1,6 @@
 ---
-title: DeepCausality v.0.8.2 supports adapative reasoning
-description: This post summarizes the new adpative reasoning feature of DeepCausality v.0.8.2 
+title: DeepCausality v0.8.2 supports adaptive reasoning
+description: This post summarizes the new adaptive reasoning feature of DeepCausality v0.8.2
 date: 2025-08-08
 author: Marvin Hansen
 ---
