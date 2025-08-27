@@ -52,9 +52,7 @@ Furthermore, a teloid shares the exact same context and the causal rules to whic
 can query the context, obtain relevant current information, e.g., current speed, location, and time, and then make a
 decision based on its internal normative logic.
 
-### Resolving Normative Conflicts
-
-Real-world ethical decisions are rarely simple. A system may face multiple, conflicting rules simultaneously. The true
+Real-world decisions are never simple. A system may face multiple, conflicting rules simultaneously. The true
 power of the Effect Ethos lies in its ability to resolve these conflicts using a formal, deterministic calculus inspired
 by established principles in logic and legal theory:
 
@@ -67,7 +65,7 @@ by established principles in logic and legal theory:
 By applying these principles, the Effect Ethos can take a set of active, potentially conflicting norms, reduce them
 automatically to a conflict-free set, and then derive a single, unambiguous verdict.
 
-### Why This Matters
+## Why This Matters
 
 The Effect Ethos is a foundational component for building trustworthy autonomous systems.
 
