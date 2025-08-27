@@ -1,6 +1,6 @@
 ---
-title: DeepCausality v0.9 supports Effect Ethos
-description: This post summarizes the new Effect Ethos feature of DeepCausality v0.9
+title: DeepCausality v0.9 Adds The Effect Ethos
+description: This post summarizes the new Effect Ethos added in DeepCausality v0.9
 date: 2025-08-27
 author: Marvin Hansen
 ---
