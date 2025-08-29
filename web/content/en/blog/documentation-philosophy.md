@@ -28,7 +28,4 @@ community, and drive open source innovation in the AI and data domains by enabli
 opportunities for all the members of the community. For more information,
 please visit [lfaidata.foundation](https://lfaidata.foundation/).
 
-The [Linux Foundation.org](https://www.linuxfoundation.org/) is the undisputed home for collaboration on open
-source software, hardware, standards, and data. Linux Foundation projects including Linux, Kubernetes, Node.js, and more
-are critical to the world’s infrastructure. For more information, please
-visit [linuxfoundation.org](https://www.linuxfoundation.org/). 
+Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
