@@ -352,6 +352,5 @@ The LF AI & Data Foundation supports an open artificial intelligence (AI) and da
 innovation in the AI and data domains by enabling collaboration and the creation of new opportunities for all
 members of the community. For more information, please visit lfaidata.foundation.
 
-The author and maintainer of the DeepCausality project, Marvin Hansen, is the director of Emet-Labs, a FinTech research
-company specializing in applying advanced computational causality to financial markets.
+Please give us a [star on GitHub.](https://github.com/deepcausality-rs/deep_causality)
 

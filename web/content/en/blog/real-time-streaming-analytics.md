@@ -892,8 +892,3 @@ community, and drive open source innovation in the AI and data domains by enabli
 opportunities for all the members of the community. For more information,
 please visit [lfaidata.foundation](https://lfaidata.foundation/).
 
-The author, Marvin Hansen, is the director of [Emet-Labs](https://emet-labs.com/), a FinTech research company
-specializing in applying
-computational causality
-to financial markets. He is the author and maintainer of the DeepCausality
-project. [Connect on Maven](https://app.heymaven.com/profile/385), the worlds first serendipity network. 
