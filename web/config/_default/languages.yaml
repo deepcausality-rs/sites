@@ -15,8 +15,8 @@ en:
 
     ### calls to action ###
     main_cta:
-      text: "Getting Started"
-      link: "/getting-started/"
+      text: "GitHub"
+      link: "https://github.com/deepcausality-rs/deep_causality"
 
     footer_cta:
       text: "GitHub"
