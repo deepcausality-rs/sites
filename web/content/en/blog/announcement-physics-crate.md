@@ -1,7 +1,7 @@
 ---
 title: "Announcing DeepCausality Physics: A Library for Scientific Computing in Rust"
 description: "Introducing deep_causality_physics: a modular, type-safe, and composable physics library powered by Uniform Mathematics."
-date: 2025-12-14
+date: 2025-12-12
 author: Marvin Hansen
 ---
 

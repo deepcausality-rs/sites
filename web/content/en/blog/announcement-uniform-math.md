@@ -1,7 +1,7 @@
 ---
 title: "DeepCausality: A Uniform Mathematical Foundation"
 description: "How DeepCausality unifies Tensors, Geometric Algebra, and Topology into a single, composable monadic language."
-date: 2025-12-13
+date: 2025-12-12
 author: Marvin Hansen
 ---
 
